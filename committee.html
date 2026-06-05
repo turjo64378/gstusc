@@ -5,34 +5,1223 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committee - GSTU Science Club</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Collapsible Accordion Custom Styling */
+        .committee-accordion {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        details {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: box-shadow 0.2s ease;
+        }
+        
+        details[open] {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        
+        summary {
+            padding: 20px 25px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-bg);
+            user-select: none;
+        }
+        
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        summary::after {
+            content: '▶';
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: transform 0.2s ease;
+            color: var(--accent-color);
+        }
+        
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+        
+        details[open] summary {
+            border-bottom: 1px solid #e2e8f0;
+            background-color: #fdfdfd;
+        }
+        
+        .accordion-content {
+            padding: 20px 25px;
+            background-color: #fafbfc;
+            overflow-x: auto; /* Enables horizontal scroll on tiny screens */
+        }
+
+        /* Table Design Styling */
+        .list-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: #ffffff;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .list-table th, .list-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1rem;
+        }
+
+        /* Adjusting widths for alignment */
+        .list-table th:nth-child(1),
+        .list-table td:nth-child(1) {
+            width: 60px;
+            text-align: center;
+        }
+
+        /* Prevents the Session column from breaking into two lines */
+        .list-table th:nth-child(5),
+        .list-table td:nth-child(5) {
+            white-space: nowrap;
+        }
+
+        .list-table th {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .list-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .list-table tr:hover {
+            background-color: #f8fafc;
+        }
+    </style>
 </head>
 <body>
 
     <universal-header></universal-header>
 
     <div class="section-container">
-        <h2 class="section-title">Executive Committee 26</h2>
-        <p class="section-subtitle">Meet the dedicated student leaders guiding the vision, tasks, and administrative operations of the GSTU Science Club.</p>
+        <h2 class="section-title">Club Committees</h2>
+        <p class="section-subtitle">Explore our legacy of leadership through the years. Click on any committee term below to view its executive board roster.</p>
 
-        <div class="grid">
-            <div class="card">
-                <img src="image/PS.jpeg" alt="President" class="profile-img">
-                <h3>Md. Tawhidur Rahman</h3>
-                <p><strong>President</strong></p>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Architecture</p>
-            </div>
-            <div class="card">
-                <img src="image/papul.jpg" alt="Vice President" class="profile-img">
-                <h3>Md. Papul Mia</h3>
-                <p><strong>Vice President</strong></p>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Civil Engineering</p>
-            </div>
-            <div class="card">
-                <img src="image/nishan.jpg" alt="Secretary" class="profile-img">
-                <h3>S M Nishan</h3>
-                <p><strong>General Secretary</strong></p>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Fisheries and Marine Bioscience</p>
-            </div>
+        <div class="committee-accordion">
+            
+            <details open>
+                <summary>Executive Committee 25-26</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Department</th>
+                                <th>Session</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Md. Tawhidur Rahman</td>
+                                <td><strong>President</strong></td>
+                                <td>Architecture</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Md. Papul Mia</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Kazi Zahid Hasan</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Anika Rahman Nishi</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Botany</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Md. Borhanuddin Rabbani</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>S M Nishan</td>
+                                <td><strong>General Secretary</strong></td>
+                                <td>Fisheries and Marine Bioscience</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Md Zubayer</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Pharmacy</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Sadia Mehnaj Saila</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Pharmacy</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Anika Sharmila Arthy</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Nur Hasan Sharabon</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Jhuma Akhter</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Botany</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Dipa Bhattacharjee</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Md.Barakat Ullah Miah</td>
+                                <td><strong>Organizing Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Md Rubaid Hasan</td>
+                                <td><strong>Deputy Organizing Secretary</strong></td>
+                                <td>Chemistry</td>
+                                <td>2022-23</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Ashikuzzaman Helal</td>
+                                <td><strong>Treasurer</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Most. Masuma Khatun</td>
+                                <td><strong>Deputy Treasurer</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Suronjit Saha Shuvo</td>
+                                <td><strong>Publicity Secretary</strong></td>
+                                <td>Applied Chemistry and Chemical Engineering</td>
+                                <td>2022-23</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>Mst. Onima Akter</td>
+                                <td><strong>Deputy Publicity Secretary</strong></td>
+                                <td>Chemistry</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>Md Shamim Hasan Akash</td>
+                                <td><strong>Office Secretary</strong></td>
+                                <td>Computer Science and Engineering</td>
+                                <td>2022-23</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>Ayon Suvro Adhikary</td>
+                                <td><strong>Deputy Office Secretary</strong></td>
+                                <td>Architecture</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>Md. Rifat Islam</td>
+                                <td><strong>Publication Secretary</strong></td>
+                                <td>Food Engineering</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Md Khademul Islam</td>
+                                <td><strong>Deputy Publication Secretary</strong></td>
+                                <td>Agriculture</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td>Nure Jannat Akhi</td>
+                                <td><strong>Deputy Publication Secretary</strong></td>
+                                <td>Fisheries and Marine Bioscience</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td>Md. Shihab Ahamad</td>
+                                <td><strong>Deputy Publication Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>2022-23</td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>Sazzad Hosan Arif</td>
+                                <td><strong>HRM Secretary</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>2022-23</td>
+                            </tr>
+                            <tr>
+                                <td>26</td>
+                                <td>Mst Jiniya Khatun</td>
+                                <td><strong>Deputy HRM Secretary</strong></td>
+                                <td>Chemistry</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>27</td>
+                                <td>Md Rahul</td>
+                                <td><strong>IT Secretary</strong></td>
+                                <td>Architecture</td>
+                                <td>2022-23</td>
+                            </tr>
+                            <tr>
+                                <td>28</td>
+                                <td>Susmoy Chandra Das</td>
+                                <td><strong>Deputy IT Secretary</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>29</td>
+                                <td>Mst. Luna Parvin</td>
+                                <td><strong>Collaboration and Communication Secretary</strong></td>
+                                <td>Psychology</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td>Sadia Sultana Disha</td>
+                                <td><strong>Deputy Collaboration and Communication Secretary</strong></td>
+                                <td>Fisheries and Marine Bioscience</td>
+                                <td>2022-23</td>
+                            </tr>
+                            <tr>
+                                <td>31</td>
+                                <td>MD Atikur Rahman</td>
+                                <td><strong>Senior Executive Member</strong></td>
+                                <td>Biotechnology and Genetic Engineering</td>
+                                <td>2021-22</td>
+                            </tr>
+                            <tr>
+                                <td>32</td>
+                                <td>Md Sajid Mostafa</td>
+                                <td><strong>Senior Executive Member</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>2022-23</td>
+                            </tr>
+                            <tr>
+                                <td>33</td>
+                                <td>Pratim Mandal</td>
+                                <td><strong>Senior Executive Member</strong></td>
+                                <td>Fisheries and Marine Bioscience</td>
+                                <td>2022-23</td>
+                            </tr>
+                            <tr>
+                                <td>34</td>
+                                <td>Mohuya Khatun</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Food Engineering</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>35</td>
+                                <td>MST Jasmine Akter</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>36</td>
+                                <td>Sanjida Akter</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Botany</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>37</td>
+                                <td>Md Esanur Islam</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>38</td>
+                                <td>Shamima Akter</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Computer Science and Engineering</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>39</td>
+                                <td>Munira Khondoker</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Computer Science and Engineering</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>40</td>
+                                <td>Zarin Akhter</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Chemistry</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>41</td>
+                                <td>Raihan</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Applied Chemistry and Chemical Engineering</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>42</td>
+                                <td>Dipankar Talukdar</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Pharmacy</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>43</td>
+                                <td>Sabiha Jannat</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Botany</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>44</td>
+                                <td>Ilma Rahman</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>45</td>
+                                <td>Rafiul Bari Shanchy</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>46</td>
+                                <td>Toufiq Hasan</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Botany</td>
+                                <td>2023-24</td>
+                            </tr>
+                            <tr>
+                                <td>47</td>
+                                <td>Md. Abu Huraira</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Fisheries and Marine Bioscience</td>
+                                <td>2022-23</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <details>
+                <summary>Executive Committee 24-25</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Department</th>
+                                <th>Session</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Shakibul Alam Nirjon</td>
+                                <td><strong>President</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Md. Alif Afridy</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Electrical and Electronic Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Mashfiqur Rahman Niloy</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Applied Chemistry and Chemical Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Arnob Mondal</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Architecture</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Nafisa Tabassum</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Md. Sayem Uddin Musa</td>
+                                <td><strong>General Secretary</strong></td>
+                                <td>Computer Science and Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Md. Fazle Rabbi</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Pharmacy</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Md. Fazlul Karim Sabit</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Biotechnology and Genetic Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Anindita Kabir</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Rayhan Hossain Raja</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Nowreen Jahan Promee</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Md. Tawhidur Rahman</td>
+                                <td><strong>Organizing Secretary</strong></td>
+                                <td>Architecture</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>S M Al-Amin Nishan</td>
+                                <td><strong>Deputy Organizing Secretary</strong></td>
+                                <td>Fisheries and Marine Bioscience</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Saurav Sen</td>
+                                <td><strong>Deputy Organizing Secretary</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Khandakar Mydul Islam</td>
+                                <td><strong>Deputy Organizing Secretary</strong></td>
+                                <td>Biotechnology and Genetic Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Maria Sultana</td>
+                                <td><strong>Deputy Organizing Secretary</strong></td>
+                                <td>Mathematics</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Anika Rahman Nishi</td>
+                                <td><strong>Treasurer</strong></td>
+                                <td>Botany</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>Md. Borhanuddin Rabbani</td>
+                                <td><strong>Deputy Treasurer</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>Umme Habiba Hasu</td>
+                                <td><strong>Deputy Treasurer</strong></td>
+                                <td>Botany</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>Md. Barakat Ullah Miah</td>
+                                <td><strong>Publicity Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>Ashikuzzaman Helal</td>
+                                <td><strong>Deputy Publicity Secretary</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Sadia Mehnaj Saila</td>
+                                <td><strong>Deputy Publicity Secretary</strong></td>
+                                <td>Pharmacy</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td>Md. Papul Mia</td>
+                                <td><strong>Office Secretary</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td>Md. Shakil Hossain</td>
+                                <td><strong>Deputy Office Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>Md. Zubayer</td>
+                                <td><strong>Publication Secretary</strong></td>
+                                <td>Pharmacy</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>26</td>
+                                <td>Md. Ashik Arif</td>
+                                <td><strong>Deputy Publication Secretary</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>27</td>
+                                <td>Md. Hafizul Islam</td>
+                                <td><strong>Deputy Publication Secretary</strong></td>
+                                <td>Applied Chemistry and Chemical Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>28</td>
+                                <td>Nadiatul Ferdous Nadia</td>
+                                <td><strong>Deputy Publication Secretary</strong></td>
+                                <td>Architecture</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>29</td>
+                                <td>Md. Mojammel Khan</td>
+                                <td><strong>HRM Secretary</strong></td>
+                                <td>Architecture</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td>Samia Akter Snigdha</td>
+                                <td><strong>Deputy HRM Secretary</strong></td>
+                                <td>Botany</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>31</td>
+                                <td>Ariful Islam</td>
+                                <td><strong>IT Secretary</strong></td>
+                                <td>Computer Science and Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>32</td>
+                                <td>Shamim Hasan Akash</td>
+                                <td><strong>Deputy IT Secretary</strong></td>
+                                <td>Computer Science and Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>33</td>
+                                <td>Mehedi Hasan Noyon</td>
+                                <td><strong>Collaboration and Communication Secretary</strong></td>
+                                <td>Physics</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>34</td>
+                                <td>Kazi Lamia Karim</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>35</td>
+                                <td>Marup Haider</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Environmental Science and Disaster Management</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>36</td>
+                                <td>Kazi Jahid Hasan</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>37</td>
+                                <td>Hasibul Hasan (Shanto)</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Botany</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>38</td>
+                                <td>Md. Fahmid Islam</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Applied Chemistry and Chemical Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>39</td>
+                                <td>Rubina Akter Asha</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Fisheries and Marine Bioscience</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>40</td>
+                                <td>Suronjit Saha Shuvo</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Applied Chemistry and Chemical Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>41</td>
+                                <td>Jannatul Nessa July</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Botany</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>42</td>
+                                <td>Md. Shihab Ahamed</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>43</td>
+                                <td>Nur Hasan Srabon</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>44</td>
+                                <td>Md. Rabaid Hasan</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Chemistry</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>45</td>
+                                <td>Anika Sharmila Arthy</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>46</td>
+                                <td>Khademul Islam</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Agriculture</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>47</td>
+                                <td>Salma Akter Nure Zahan</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Fisheries and Marine Bioscience</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>48</td>
+                                <td>Anondita Medha</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>49</td>
+                                <td>Mst. Jiniya khatun</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Chemistry</td>
+                                <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <details>
+                <summary>Executive Committee 23-24</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Department</th>
+                                <th>Session</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Sadman Bin Kawsar</td>
+                                <td><strong>President</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Md. Shariful Islam Shuvo</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Jubayer Ahmed</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Botany</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Mt Sumaya Khatun</td>
+                                <td><strong>Vice President</strong></td>
+                                <td>Botany</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Ariful Islam</td>
+                                <td><strong>General Secretary</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Md. Rasel</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Chemistry</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Delowar Hossain</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Sadia Islam Babli</td>
+                                <td><strong>Joint Secretary</strong></td>
+                                <td>Botany</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Shakibul Alam Nirjon</td>
+                                <td><strong>Organizing Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Arnob Mondal</td>
+                                <td><strong>Dep. Organizing Secretary</strong></td>
+                                <td>Architecture</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Nafisa Tabassum</td>
+                                <td><strong>Dep. Organizing Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Md. Sayem Uddin Musa</td>
+                                <td><strong>Treasurer</strong></td>
+                                <td>Computer Science and Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Anindita Kabir</td>
+                                <td><strong>Dep. Treasurer</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Md.Alif Afridy</td>
+                                <td><strong>Publicity Secretary</strong></td>
+                                <td>Electrical and Electronic Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Mashfiqur Rahman Niloy</td>
+                                <td><strong>Dep. Publicity Secretary</strong></td>
+                                <td>Applied Chemistry and Chemical Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Nowreen Jahan Promee</td>
+                                <td><strong>Dep. Publicity Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Saurav Sen</td>
+                                <td><strong>Office Secretary</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>Md. Fazle Rabbi</td>
+                                <td><strong>Dep. Office Secretary</strong></td>
+                                <td>Pharmacy</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>Fazlul Karim Sabit</td>
+                                <td><strong>Publication Secretary</strong></td>
+                                <td>Genetic Engineering and Biotechnology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>Rayhan Hossain Raja</td>
+                                <td><strong>HRM Secretary</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>Md. Tawhidur Rahman</td>
+                                <td><strong>IT Secretary</strong></td>
+                                <td>Architecture</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Md. Mojammel Khan Paris</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Architecture</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td>Md Shakil Hossain</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Biochemistry and Molecular Biology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td>Borhan Uddin</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>Ashikuzzaman Helal</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Civil Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>26</td>
+                                <td>Sheikh Nishan</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Fisheries and Marine Bioscience</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>27</td>
+                                <td>Md Afzal Hossen Kawsar</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Chemistry</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>28</td>
+                                <td>Anika Rahman Nishi</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Botany</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>29</td>
+                                <td>Ummey Habiba Hasu</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Botany</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td>Md. Shaheen Alam</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Mathematics</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>31</td>
+                                <td>Manzurul Afran</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Genetic Engineering and Biotechnology</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>32</td>
+                                <td>Rafsan Islam</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Environmental Science and Disaster Management</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>33</td>
+                                <td>Ismita Tasnim Mim</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Environmental Science and Disaster Management</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>34</td>
+                                <td>Md. Sohag Sheikh</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Statistics</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>35</td>
+                                <td>Md.Sakib Hassan Prottoy</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Electrical and Electronic Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>36</td>
+                                <td>Md.Shajjad Amir Shajjad</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Electrical and Electronic Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>37</td>
+                                <td>Md. Hafijul Islam</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Applied Chemistry and Chemical Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>38</td>
+                                <td>Md Emon Chowdhury</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Applied Chemistry and Chemical Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>39</td>
+                                <td>Sadia Mehnaj Saila</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Pharmacy</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>40</td>
+                                <td>Md. Zubayer</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Pharmacy</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>41</td>
+                                <td>Md. Ariful Islam</td>
+                                <td><strong>Executive Member</strong></td>
+                                <td>Computer Science and Engineering</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>42</td>
+                                <td>Abudullah AL Munim</td>
+                                <td><strong>Graphics Designer</strong></td>
+                                <td>Computer Science and Engineering</td>
+                                <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <details>
+                <summary>Executive Committee 22-23</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Department</th>
+                                <th>Session</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <details>
+                <summary>Executive Committee 21-22</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Department</th>
+                                <th>Session</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+             <details>
+                <summary>Executive Committee 20-21</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Department</th>
+                                <th>Session</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+            <details>
+                <summary>Executive Committee 19-20</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Department</th>
+                                <th>Session</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </details>
         </div>
     </div>
 

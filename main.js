@@ -9,7 +9,14 @@ class UniversalHeader extends HTMLElement {
                     <ul id="nav-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="committee.html">Committee</a></li>
+                        <li class="dropdown">
+                            <a href="committee.html" class="dropdown-trigger">Committee</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="advisor.html">Advisor Panel</a></li>
+                                <li><a href="committee.html">Executive Committee</a></li>
+                                <li><a href="standing-committee.html">Standing Committee</a></li>
+                            </ul>
+                        </li>
                         <li><a href="events.html">Events</a></li>
                         <li><a href="teams.html">Teams</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
@@ -45,6 +52,7 @@ class UniversalFooter extends HTMLElement {
         `;
     }
 }
+
 
 customElements.define('universal-header', UniversalHeader);
 customElements.define('universal-footer', UniversalFooter);
