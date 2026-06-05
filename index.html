@@ -1,6 +1,104 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - GSTU Science Club</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-  <p>Hello World</p>
+
+    <universal-header></universal-header>
+
+    <section id="hero">
+        <img src="image/logo.png" height="150px" width="150px">
+        <h1>GSTU Science Club</h1>
+        <h3>Apply Your Idea</h3> <br>
+        <p>Join the brightest minds at GSTU as we push the boundaries of science, technology, and engineering. Your journey into the unknown starts here.</p>
+        <a href="" class="btn">Explore More</a>
+    </section>
+
+    <div class="section-container">
+        <h2 class="section-title">Welcome to the Science Hub</h2>
+        <p class="section-subtitle">The GSTU Science Club is a platform for curious minds. Click through our portal sections below to see who we are, what we build, and how you can get involved.</p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>👥 Our Committee</h3>
+                <p>Meet the executive board members running the club operations for this academic year.</p>
+                <br>
+                <a href="committee.html" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">View Leaders</a>
+            </div>
+
+            <div class="card">
+                <h3>📅 Club Events</h3>
+                <p>Stay updated with our upcoming seminars, annual science fairs, and tech hackathons.</p>
+                <br>
+                <a href="events.html" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">See Schedule</a>
+            </div>
+
+            <div class="card">
+                <h3>🛠️ Teams</h3>
+                <p>Discover our core divisions: Robotics, Software/IT, Astronomy, and Life Sciences.</p>
+                <br>
+                <a href="teams.html" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Explore Teams</a>
+            </div>
+
+            <div class="card">
+                <h3>🖼️ Photo Gallery</h3>
+                <p>Take a look at snapshots from our latest project builds, field trips, and campus exhibitions.</p>
+                <br>
+                <a href="gallery.html" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Open Gallery</a>
+            </div>
+        </div>
+    </div>
+<!-- Leadership Messages Section -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; font-family: sans-serif; color: #333;">
+    <h2 class="section-title" align="center">Messages from our Leaders</h2> <br><br>
+    <!-- SECTION 1: VICE CHANCELLOR (Message Left, Picture Right) -->
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 60px; gap: 40px; flex-wrap: wrap;">
+        <!-- VC Message (Left) -->
+        <div style="flex: 1; min-width: 300px;">
+            <h2 style="margin-bottom: 5px; color: #1a365d;">Professor Dr. Hossain Uddin Shekhar</h2>
+            <h4 style="margin: 0 0 20px 0; color: #4a5568; font-weight: 500;">Honorable Vice Chancellor (GSTU)</h4>
+            <p style="line-height: 1.6; font-style: italic; color: #4a5568; border-left: 4px solid #3182ce; padding-left: 15px; margin-bottom: 15px;">
+                "Insert a key quote or mission-driven statement from the Vice Chancellor here."
+            </p>
+            <p style="line-height: 1.6; text-align: justify;">
+                [Type the main body of the Vice Chancellor's message here. This section typically dives deeper into academic excellence, operational milestones, campus development, and student/faculty expectations.]
+            </p>
+        </div>
+        <!-- VC Picture (Right) -->
+        <div style="flex: 0 0 250px; text-align: center;">
+            <img src="image/VC.jpg" alt="Vice Chancellor" style="width: 100%; max-width: 250px; height: 320px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+
+    <hr style="border: 0; height: 1px; background: #e2e8f0; margin-bottom: 60px;">
+
+    <!-- SECTION 2: PRESIDENT (Picture Left, Message Right) -->
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
+        <!-- President Picture (Left) -->
+        <div style="flex: 0 0 250px; text-align: center; order: 1;">
+            <img src="image/PS.jpeg" alt="President" style="width: 100%; max-width: 250px; height: 320px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        </div>
+        <!-- President Message (Right) -->
+        <div style="flex: 1; min-width: 300px; order: 2;">
+            <h2 style="margin-bottom: 5px; color: #1a365d;">Md. Tawhidur Rahman</h2>
+            <h4 style="margin: 0 0 20px 0; color: #4a5568; font-weight: 500;">President (GSTU Science Club)</h4>
+            <p style="line-height: 1.6; font-style: italic; color: #4a5568; border-left: 4px solid #2b6cb0; padding-left: 15px; margin-bottom: 15px;">
+                "Insert a powerful, inspiring opening quote or summary sentence from the President here."
+            </p>
+            <p style="line-height: 1.6; text-align: justify;">
+                [Type the main body of the President's message here. Usually, this focuses on the high-level vision, overarching goals, recent major achievements, and a welcoming tone for the upcoming year or initiative.]
+            </p>
+        </div>
+    </div>
+
+</section>
+
+    <universal-footer></universal-footer>
+
+    <script src="main.js"></script>
 </body>
-  
 </html>
