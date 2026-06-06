@@ -50,7 +50,6 @@ function initializeParticles(containerElement, canvasElement) {
 
         // Manage movement and pointer physics interaction loop
         update() {
-            // Standard bounding box collision check
             if (this.x > canvasElement.width || this.x < 0) {
                 this.directionX = -this.directionX;
             }
@@ -64,7 +63,6 @@ function initializeParticles(containerElement, canvasElement) {
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
                 
-                // If the particle is within the pointer radius, pull it towards the pointer gently
                 if (distance < mouse.radius) {
                     const force = (mouse.radius - distance) / mouse.radius;
                     this.x += (dx / distance) * force * 2.5;
@@ -72,7 +70,6 @@ function initializeParticles(containerElement, canvasElement) {
                 }
             }
 
-            // Normal idle environment float velocity
             this.x += this.directionX;
             this.y += this.directionY;
             this.draw();
@@ -82,17 +79,16 @@ function initializeParticles(containerElement, canvasElement) {
     // Populate the area with uniform, glowing node vectors
     function initParticles() {
         particlesArray = [];
-        // Calculate particle count dynamically based on the width of the viewport
         let numberOfParticles = Math.floor((canvasElement.width * canvasElement.height) / 4000);
-        if (numberOfParticles < 30) numberOfParticles = 30; // Min density fallback
+        if (numberOfParticles < 15) numberOfParticles = 15; 
 
         for (let i = 0; i < numberOfParticles; i++) {
-            let size = (Math.random() * 2) + 1; // Particle diameter sizing variance
+            let size = (Math.random() * 2) + 1;
             let x = Math.random() * (canvasElement.width - size * 2) + size;
             let y = Math.random() * (canvasElement.height - size * 2) + size;
-            let directionX = (Math.random() * 0.8) - 0.4; // Idle speed constraints
-            let directionY = (Math.random() * 0.8) - 0.4;
-            let color = 'rgba(0, 168, 255, ' + (Math.random() * 0.4 + 0.3) + ')'; // Glow accent palette opacity variations
+            let directionX = (Math.random() * 0.6) - 0.3;
+            let directionY = (Math.random() * 0.6) - 0.3;
+            let color = 'rgba(0, 168, 255, ' + (Math.random() * 0.4 + 0.3) + ')';
 
             particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
         }
@@ -107,12 +103,11 @@ function initializeParticles(containerElement, canvasElement) {
             particlesArray[i].update();
         }
         
-        // Optional: Draw structural vector connection wires between nearby matching nodes
         connectNodes();
     }
 
     function connectNodes() {
-        let maxDistance = 75;
+        let maxDistance = 65;
         for (let a = 0; a < particlesArray.length; a++) {
             for (let b = a; b < particlesArray.length; b++) {
                 let dx = particlesArray[a].x - particlesArray[b].x;
@@ -120,7 +115,7 @@ function initializeParticles(containerElement, canvasElement) {
                 let distance = Math.sqrt(dx * dx + dy * dy);
 
                 if (distance < maxDistance) {
-                    let opacity = (1 - (distance / maxDistance)) * 0.15;
+                    let opacity = (1 - (distance / maxDistance)) * 0.12;
                     ctx.strokeStyle = `rgba(0, 168, 255, ${opacity})`;
                     ctx.lineWidth = 1;
                     ctx.beginPath();
@@ -168,7 +163,6 @@ class UniversalHeader extends HTMLElement {
         </header>
         `;
         
-        // Highlight Active Link Dynamically
         const links = this.querySelectorAll('#nav-links a');
         let currentPath = window.location.pathname.split('/').pop();
         if (currentPath === "" || currentPath === "index.html") {
@@ -181,14 +175,13 @@ class UniversalHeader extends HTMLElement {
             }
         });
 
-        // Instantiate particle engine inside the header boundaries
         const headerContainer = this.querySelector('header');
         const headerCanvas = this.querySelector('.particle-canvas');
         initializeParticles(headerContainer, headerCanvas);
     }
 }
 
-// Define Universal Footer Component with Quick Links and Social Platforms
+// Define Universal Footer Component
 class UniversalFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -239,7 +232,6 @@ class UniversalFooter extends HTMLElement {
         </footer>
         `;
 
-        // Instantiate particle engine inside the footer boundaries
         const footerContainer = this.querySelector('footer');
         const footerCanvas = this.querySelector('.particle-canvas');
         initializeParticles(footerContainer, footerCanvas);
@@ -248,3 +240,20 @@ class UniversalFooter extends HTMLElement {
 
 customElements.define('universal-header', UniversalHeader);
 customElements.define('universal-footer', UniversalFooter);
+
+// --- DYNAMIC POSITION TRACKING FOR GLOW & FILL ---
+document.addEventListener('DOMContentLoaded', () => {
+    const glowTitle = document.querySelector('.interactive-glow-title');
+    if (glowTitle) {
+        glowTitle.addEventListener('mousemove', (e) => {
+            const rect = glowTitle.getBoundingClientRect();
+            // Calculates mouse coordinates relative to the text element itself
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Injects positions dynamically into CSS variables
+            glowTitle.style.setProperty('--x', `${x}px`);
+            glowTitle.style.setProperty('--y', `${y}px`);
+        });
+    }
+});
