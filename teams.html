@@ -5,6 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teams - GSTU Science Club</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Collapsible Accordion Custom Styling */
+        .committee-accordion {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        details {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: box-shadow 0.2s ease;
+        }
+        
+        details[open] {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        
+        summary {
+            padding: 20px 25px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-bg);
+            user-select: none;
+        }
+        
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        summary::after {
+            content: '▶';
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: transform 0.2s ease;
+            color: var(--accent-color);
+        }
+        
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+        
+        details[open] summary {
+            border-bottom: 1px solid #e2e8f0;
+            background-color: #fdfdfd;
+        }
+        
+        .accordion-content {
+            padding: 20px 25px;
+            background-color: #fafbfc;
+            overflow-x: auto; /* Enables horizontal scroll on tiny screens */
+        }
+
+        /* Table Design Styling */
+        .list-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: #ffffff;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .list-table th, .list-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1rem;
+        }
+
+        /* Adjusting widths for alignment */
+        .list-table th:nth-child(1),
+        .list-table td:nth-child(1) {
+            width: 60px;
+            text-align: center;
+        }
+
+        /* Prevents the Team Assignment column header from breaking uncomfortably */
+        .list-table th:nth-child(3) {
+            white-space: nowrap;
+        }
+
+        .list-table th {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .list-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .list-table tr:hover {
+            background-color: #f8fafc;
+        }
+    </style>
 </head>
 <body>
 
@@ -12,57 +117,161 @@
 
     <div class="section-container">
         <h2 class="section-title">Our Specialized Teams</h2>
-        <p class="section-subtitle">The club splits into targeted operational teams so members can deep-dive into what they enjoy most.</p>
+        <p class="section-subtitle">The club splits into targeted operational teams so members can deep-dive into what they enjoy most. Select a Committee Panel below to see team allocations.</p>
 
-        <div class="grid">
-            <div class="card">
-                <h3>Publicity & Outreach Team</h3>
-                <p>Deals directly with microcontrollers, autonomous systems, circuit prototyping, drone mechanics, and engineering design contests.</p>
-          <br>  <p>Leader: </p>
-          <p>Co-leader: </p>
-            </div>
-            <div class="card">
-                <h3>Event & Project Team</h3>
-                <p>Focuses on web deployment, script development, algorithmic problem solving, cybersecurity tasks, and fast-paced hackathons.</p>
-           <br><p>Leader: </p>
-           <p>Co-leader: </p>
-            </div>
-            <div class="card">
-                <h3>Mentorship & Education Team</h3>
-                <p>Dedicated entirely to observation. Manages deep-sky telescope rigs, field stargazing operations, and astrophysics theoretical studies.</p>
-         <br>  <p>Leader: </p>
-         <p>Co-leader: </p>
-            </div>
-            <div class="card">
-                <h3>Content Writing Team</h3>
-                <p>Explores chemistry experiments, structural molecular setups, bio-tech alignments, and collaborative environmental clean-tech designs.</p>
-        <br>   <p>Leader: </p>
-        <p>Co-leader: </p>
-            </div>
-            <div class="card">
-                <h3>Anchoring Team</h3>
-                <p>Explores chemistry experiments, structural molecular setups, bio-tech alignments, and collaborative environmental clean-tech designs.</p>
-         <br>  <p>Leader: </p>
-         <p>Co-leader: </p>
-            </div>
-            <div class="card">
-                <h3>Research & Innovation Team</h3>
-                <p>Explores chemistry experiments, structural molecular setups, bio-tech alignments, and collaborative environmental clean-tech designs.</p>
-        <br>   <p>Leader: </p>
-        <p>Co-leader: </p>
-            </div>
-            <div class="card">
-                <h3>Technical, IT & Graphics Team</h3>
-                <p>Explores chemistry experiments, structural molecular setups, bio-tech alignments, and collaborative environmental clean-tech designs.</p>
-        <br>  <p>Leader: </p>
-        <p>Co-leader: </p>
-            </div>
-            <div class="card">
-                <h3>Sponsoring & Fundraising Team</h3>
-                <p>Explores chemistry experiments, structural molecular setups, bio-tech alignments, and collaborative environmental clean-tech designs.</p>
-        <br>   <p>Leader: </p>
-        <p>Co-leader: </p>
-            </div>
+        <div class="committee-accordion">
+            
+            <details open>
+                <summary>Team Panel 25-26</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Name</th>
+                                <th>Team Assignment</th>
+                                <th>Designation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Suronjit Saha Shuvo</td>
+                                <td>Publicity & Outreach Team</td>
+                                <td>Leader</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Mst. Onima Akter</td>
+                                <td>Publicity & Outreach Team</td>
+                                <td>Co Leader</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Sazzad Hosan Arif</td>
+                                <td>Event & Project Team</td>
+                                <td>Leader</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Sadia Sultana Disha</td>
+                                <td>Event & Project Team</td>
+                                <td>Co Leader</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Nur Hasan Sharabon</td>
+                                <td>Mentorship & Education Team</td>
+                                <td>Leader</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>kazi Lamia Karim</td>
+                                <td>Mentorship & Education Team</td>
+                                <td>Co Leader</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>S M Nishan</td>
+                                <td>Sponsoring & Fundraising Team</td>
+                                <td>Leader</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Protim Mondal</td>
+                                <td>Sponsoring & Fundraising Team</td>
+                                <td>Co Leader</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Md. Zubayer</td>
+                                <td>Content Writing Team</td>
+                                <td>Leader</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Mst Luna Parvin</td>
+                                <td>Content Writing Team</td>
+                                <td>Co Leader</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Md. Rifat Islam</td>
+                                <td>Anchoring Team</td>
+                                <td>Leader</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Nure Jannat Akhi</td>
+                                <td>Anchoring Team</td>
+                                <td>Co Leader</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Md Barakatullah Ruhi</td>
+                                <td>Research & Innovation Team</td>
+                                <td>Leader</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Md Khademul Islam</td>
+                                <td>Research & Innovation Team</td>
+                                <td>Co Leader</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Md Rahul</td>
+                                <td>Technical, IT & Graphics Team</td>
+                                <td>Leader</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Susmoy Chandra das</td>
+                                <td>Technical, IT & Graphics Team</td>
+                                <td>Co Leader</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <details>
+                <summary>Team Panel 24-25</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Name</th>
+                                <th>Team Assignment</th>
+                                <th>Designation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <details>
+                <summary>Team Panel 23-24</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Name</th>
+                                <th>Team Assignment</th>
+                                <th>Designation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </details>
         </div>
     </div>
 

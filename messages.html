@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Messages - GSTU Science Club</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom styles to integrate horizontal message layouts with the global interactive .card system */
+        .card h4 {
+            color: #666;
+            transition: color 0.4s ease;
+        }
+        /* Safely color-invert the h4 title when the card container is hovered */
+        .card:hover h4 {
+            color: #cbd5e1;
+        }
+        .card p {
+            transition: color 0.4s ease, border-color 0.4s ease;
+        }
+        
+        /* Mobile responsiveness updates to keep things cleanly centered when blocks wrap */
+        @media (max-width: 900px) {
+            .card {
+                text-align: center !important;
+                justify-content: center !important;
+            }
+            .card p {
+                border-left: none !important;
+                padding-left: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <universal-header></universal-header>
+
+    <div class="section-container">
+        <h2 class="section-title">Club Messages</h2>
+        <p class="section-subtitle">Read inspiring words and visionary guidance from our honorable advisors and leadership board.</p>
+
+        <div class="card" style="display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding: 30px; margin-bottom: 40px; text-align: left;">
+            <div style="flex: 0 0 220px; text-align: center;">
+                <img src="image/VC.jpg" alt="Honorable Vice Chancellor" style="width: 100%; max-width: 220px; height: 260px; object-fit: cover; border-radius: 8px; border: 3px solid var(--primary-color);">
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="margin-bottom: 5px; font-size: 1.6rem;">Professor Dr. Hossain Uddin Shekhar</h3>
+                <h4 style="margin: 0 0 15px 0; font-weight: 500;">Honorable Vice Chancellor, GSTU</h4>
+                <p style="line-height: 1.7; font-style: italic; border-left: 4px solid var(--accent-color); padding-left: 15px;">
+                    "Science and technology form the cornerstone of modern global development. I am immensely proud to see the students of GSTU cultivating a rich culture of research, technological innovation, and scientific curiosity through the Science Club. Our mission is to transform these bright minds into thinkers and leaders who will engineer solutions for tomorrow's complex challenges."
+                </p>
+            </div>
+        </div>
+
+        <div class="card" style="display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding: 30px; margin-bottom: 40px; text-align: left;">
+            <div style="flex: 1; min-width: 300px; order: 2;">
+                <h3 style="margin-bottom: 5px; font-size: 1.6rem;">Dr. Md. Kamruzzaman</h3>
+                <h4 style="margin: 0 0 15px 0; font-weight: 500;">Chief Advisor, GSTU Science Club</h4>
+                <p style="line-height: 1.7; font-style: italic; border-left: 4px solid var(--accent-color); padding-left: 15px;">
+                    "Education is not merely about accumulating facts; it is about learning how to use those facts to innovate. The GSTU Science Club provides a magnificent workspace where classroom theory meets hands-on application. I encourage every student to step forward, join hands with our division teams, work on impactful research, and expand their technical mastery."
+                </p>
+            </div>
+            <div style="flex: 0 0 220px; text-align: center; order: 1;">
+                <img src="image/CA.jpg" alt="Club Advisor" style="width: 100%; max-width: 220px; height: 260px; object-fit: cover; border-radius: 8px; border: 3px solid var(--primary-color);">
+            </div>
+        </div>
+
+        <div class="card" style="display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding: 30px; margin-bottom: 40px; text-align: left;">
+            <div style="flex: 0 0 220px; text-align: center;">
+                <img src="image/PS.jpeg" alt="President" style="width: 100%; max-width: 220px; height: 260px; object-fit: cover; border-radius: 8px; border: 3px solid var(--primary-color);">
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="margin-bottom: 5px; font-size: 1.6rem;">Md. Tawhidur Rahman</h3>
+                <h4 style="margin: 0 0 15px 0; font-weight: 500;">President, GSTU Science Club</h4>
+                <p style="line-height: 1.7; font-style: italic; border-left: 4px solid var(--accent-color); padding-left: 15px;">
+                    "Welcome to our collective hub! As students of a technological university, it is our distinct responsibility to look beyond traditional frameworks and engineer new ideas. Whether your focus is competitive coding, robotics projects, data science research, or content writing, the GSTU Science Club is your canvas. Let’s collaborate, experiment, and turn ideas into reality."
+                </p>
+            </div>
+        </div>
+
+        <div class="card" style="display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding: 30px; margin-bottom: 20px; text-align: left;">
+            <div style="flex: 1; min-width: 300px; order: 2;">
+                <h3 style="margin-bottom: 5px; font-size: 1.6rem;">S M Nishan</h3>
+                <h4 style="margin: 0 0 15px 0; font-weight: 500;">General Secretary, GSTU Science Club</h4>
+                <p style="line-height: 1.7; font-style: italic; border-left: 4px solid var(--accent-color); padding-left: 15px;">
+                    "Behind every impactful hackathon, workshop, and science project is a highly dedicated team working relentlessly around the clock. Here at GSTU SC, we emphasize skill acquisition, execution, and meaningful communication. We welcome all newcomers to leverage our resource assets and participate in building a brighter science community."
+                </p>
+            </div>
+            <div style="flex: 0 0 220px; text-align: center; order: 1;">
+                <img src="image/gs.jpg" alt="General Secretary" style="width: 100%; max-width: 220px; height: 260px; object-fit: cover; border-radius: 8px; border: 3px solid var(--primary-color);">
+            </div>
+        </div>
+
+    </div>
+
+    <universal-footer></universal-footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
