@@ -146,7 +146,9 @@ class UniversalHeader extends HTMLElement {
                 <nav>
                     <ul id="nav-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="achievement.html">Achievement</a></li>
+                        <li><a href="messages.html">Messages</a></li>
                         <li class="dropdown">
                             <a href="committee.html" class="dropdown-trigger">Committee <span class="dropdown-arrow">&#9662;</span></a>
                             <ul class="dropdown-menu">
@@ -157,10 +159,8 @@ class UniversalHeader extends HTMLElement {
                                 <li><a href="teams.html">Teams</a></li>
                             </ul>
                         </li>
-                        <li><a href="messages.html">Messages</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="achievement.html">Achievement</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
                     </ul>
                 </nav>
             </div>
