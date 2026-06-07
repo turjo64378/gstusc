@@ -125,16 +125,13 @@ function initializeParticles(containerElement, canvasElement) {
 class UniversalHeader extends HTMLElement {
     connectedCallback() {
         // --- UNIVERSAL FAVICON INJECTION ENGINE ---
-        // Dynamically verifies and injects the site favicon cleanly across all sub-pages
         if (!document.querySelector("link[rel*='icon']")) {
-            // Standard Navigation Tab Favicon
             const favicon = document.createElement('link');
             favicon.rel = 'icon';
             favicon.type = 'image/png';
             favicon.href = 'image/logo.png';
             document.head.appendChild(favicon);
 
-            // Apple Mobile Bookmark Icon Touch Support
             const appleTouchIcon = document.createElement('link');
             appleTouchIcon.rel = 'apple-touch-icon';
             appleTouchIcon.href = 'image/logo.png';
@@ -343,7 +340,18 @@ document.addEventListener('DOMContentLoaded', () => {
             resizeDebounceTimeout = setTimeout(updateSliderPosition, 100);
         });
 
-        // Small timeout ensures element widths are fully computed by browser layout trees
         setTimeout(updateSliderPosition, 150);
     }
+
+    // 5. Advisor Spotlight Matrix Engine
+    const advisorCards = document.querySelectorAll('.interactive-advisor-card');
+    advisorCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        });
+    });
 });

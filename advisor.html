@@ -63,39 +63,141 @@
         }
         
         .accordion-content {
-            padding: 20px 25px;
+            padding: 25px 25px;
             background-color: #fafbfc;
-            overflow-x: auto;
         }
 
-        /* Table Design Styling */
-        .list-table {
+        /* Subsection Labeling */
+        .advisor-section-heading {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin: 10px 0 20px 0;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 12px;
+        }
+
+        .advisor-section-heading.space-top {
+            margin-top: 40px;
+        }
+
+        /* Chief Advisor Layout Center Constraints */
+        .chief-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .chief-container .card {
+            max-width: 450px;
             width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            background: #ffffff;
-            border-radius: 6px;
+        }
+
+        /* 4 Advisors Single Row Grid Matrix */
+        .advisors-row-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* Advisor Card Internal Design Uniformity */
+        .interactive-advisor-card {
+            position: relative;
             overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid rgba(24, 134, 181, 0.12);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 20px; /* Added balanced padding */
+            text-align: center;
         }
 
-        .list-table th, .list-table td {
-            padding: 14px 18px;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 1rem;
+        /* Updated Photo Placement Styles to match standard framing layout proportions */
+        .advisor-photo {
+            width: 100%;
+            height: 250px; /* Updated to match standard item frame height tracking constraints */
+            margin-bottom: 18px; /* Spacing between photo and name */
+            border-radius: 12px; /* Updated to match uniform frame curvature curves */
+            overflow: hidden;
+            border: 1px solid rgba(15, 83, 112, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: #e2e8f0; 
         }
 
-        .list-table th {
-            background-color: var(--primary-color);
+        .advisor-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .advisor-badge {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .interactive-advisor-card h3 {
+            margin: 0 0 8px 0; /* Tightened heading margin */
+        }
+
+        .interactive-advisor-card p.dept {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .interactive-advisor-card p.session {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 8px;
+        }
+
+        /* Spotlight Vector Layer */
+        .interactive-advisor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle 180px at var(--x, 0px) var(--y, 0px), rgba(0, 168, 255, 0.18), transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Hover Interface Transformations */
+        .interactive-advisor-card:hover::before {
+            opacity: 1;
+        }
+
+        .interactive-advisor-card:hover .advisor-badge {
             color: var(--text-light);
-            font-weight: 600;
         }
 
-        .list-table tr:last-child td {
-            border-bottom: none;
+        .interactive-advisor-card:hover p.session {
+            color: #cbd5e1;
         }
 
-        .list-table tr:hover {
-            background-color: #f8fafc;
+        /* Responsive Adaptive Viewports Setup */
+        @media (max-width: 1024px) {
+            .advisors-row-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .advisors-row-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -105,69 +207,70 @@
 
     <div class="section-container">
         <h2 class="section-title">Advisor Panel</h2>
-        <p class="section-subtitle">Meet the esteemed faculty members and industry experts who provide academic guidance and strategic mentorship to our club.</p>
+        <p class="section-subtitle">Meet the esteemed faculty members who provide academic guidance and strategic mentorship to our club.</p>
 
         <div class="committee-accordion">
-            
-            <details open>
-                <summary>Current Advisors</summary>
-                <div class="accordion-content">
-                    <table class="list-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Designation</th>
-                                <th>Department</th>
-                                <th>Session</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Dr. Md. Kamruzzaman</td>
-                                <td><strong>Chief Advisor</strong></td>
-                                <td>Applied Chemistry and Chemical Engineering</td>
-                                <td>Current Panel</td>
-                            </tr>
-                            <tr>
-                                <td>Dr. Neaz Al Hasan</td>
-                                <td><strong>Advisor</strong></td>
-                                <td>Fisheries and Marine Bioscience</td>
-                                <td>Current Panel</td>
-                            </tr>
-                            <tr>
-                                <td>Aohona Arefin</td>
-                                <td><strong>Advisor</strong></td>
-                                <td>Civil Engineering</td>
-                                <td>Current Panel</td>
-                            </tr>
-                            <tr>
-                                <td>Masnun Homaira Maisha</td>
-                                <td><strong>Advisor</strong></td>
-                                <td>Botany</td>
-                                <td>Current Panel</td>
-                            </tr>
-                            <tr>
-                                <td>Md. Mahfuzur Rahman</td>
-                                <td><strong>Advisor</strong></td>
-                                <td>Agriculture</td>
-                                <td>Current Panel</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </details>
+                                
+                    <h2 align="center">Chief Advisor</h2> <br>
+                    <div class="chief-container">
+                        <div class="card interactive-advisor-card">
+                            <!-- Photo at the top -->
+                            <div class="advisor-photo">
+                                <img src="image/CA.jpg" alt="Dr. Md. Kamruzzaman">
+                            </div>
+                            <h3>Dr. Md. Kamruzzaman</h3>
+                            <p class="dept"><b>Associate Professor</b></p>
+                            <p class="dept">Department of</p>
+                            <p class="dept">Applied Chemistry and Chemical Engineering</p>
+                        </div>
+                    </div><br><br>
 
-            <details>
-                <summary>Former Advisors</summary>
-                <div class="accordion-content">
-                    <table class="list-table">
-                        <thead>
-
-                        </tbody>
-                    </table>
-                </div>
-            </details>
-
+                    <h2 align="center">Advisors</h2> <br><br>
+                    <div class="advisors-row-grid">
+                        <div class="card interactive-advisor-card">
+                            <!-- Photo at the top -->
+                            <div class="advisor-photo">
+                                <img src="image/a1.jpg" alt="Dr. Neaz Al Hasan">
+                            </div>
+                            <h3>Dr. Neaz Al Hasan</h3>
+                            <p class="dept"><b>Assistant Professor</b></p>
+                            <p class="dept">Department of</p>
+                            <p class="dept">Fisheries and Marine Bioscience</p>
+                        </div>
+                        
+                        <div class="card interactive-advisor-card">
+                            <!-- Photo at the top -->
+                            <div class="advisor-photo">
+                                <img src="image/c3.jpg" alt="Aohona Arefin">
+                            </div>
+                            <h3>Aohona Arefin</h3>
+                            <p class="dept"><b>Assistant Professor</b></p>
+                            <p class="dept">Department of</p>
+                            <p class="dept">Civil Engineering</p>
+                        </div>
+                        
+                        <div class="card interactive-advisor-card">
+                            <!-- Photo at the top -->
+                            <div class="advisor-photo">
+                                <img src="image/c2.jpg" alt="Masnun Homaira Maisha">
+                            </div>
+                            <h3>Masnun Homaira Maisha</h3>
+                            <p class="dept"><b>Assistant Professor</b></p>
+                            <p class="dept">Department of</p>
+                            <p class="dept">Botany</p>
+                        </div>
+                        
+                        <div class="card interactive-advisor-card">
+                            <!-- Photo at the top -->
+                            <div class="advisor-photo">
+                                <img src="image/c4.jpg" alt="Md. Mahfuzur Rahman">
+                            </div>
+                            <h3>Md. Mahfuzur Rahman</h3>
+                            <p class="dept"><b>Lecturer</b></p>
+                            <p class="dept">Department of</p>
+                            <p class="dept">Agriculture</p>
+                        </div>
+                    </div>
         </div>
     </div>
 
