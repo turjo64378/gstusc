@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams - GSTU Science Club</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Collapsible Accordion Custom Styling */
+        .committee-accordion {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        details {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: box-shadow 0.2s ease;
+        }
+        
+        details[open] {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        
+        summary {
+            padding: 20px 25px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-bg);
+            user-select: none;
+        }
+        
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        summary::after {
+            content: '▶';
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: transform 0.2s ease;
+            color: var(--accent-color);
+        }
+        
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+        
+        details[open] summary {
+            border-bottom: 1px solid #e2e8f0;
+            background-color: #fdfdfd;
+        }
+        
+        .accordion-content {
+            padding: 20px 25px;
+            background-color: #fafbfc;
+            overflow-x: auto; /* Enables horizontal scroll on tiny screens */
+        }
+
+        /* Table Design Styling */
+        .list-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: #ffffff;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .list-table th, .list-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1rem;
+        }
+
+        /* Adjusting widths for alignment */
+        .list-table th:nth-child(1),
+        .list-table td:nth-child(1) {
+            width: 60px;
+            text-align: center;
+        }
+
+        /* Prevents the Team Assignment column header from breaking uncomfortably */
+        .list-table th:nth-child(3) {
+            white-space: nowrap;
+        }
+
+        .list-table th {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .list-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .list-table tr:hover {
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+
+    <universal-header></universal-header>
+
+    <div class="section-container">
+        <h2 class="section-title">Our Alumni Panel</h2>
+        <p class="section-subtitle">Honoring the foundational teams whose leadership laid the groundwork for our scientific community. Click on any committee year below to view its full member roster.</p>
+
+        <div class="committee-accordion">
+            
+            <details open>
+                <summary>Alumni Panel 25-26</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+
+                    </table>
+                </div>
+            </details>
+
+            <details>
+                <summary>Alumni Panel 24-25</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <details>
+                <summary>Alumni Panel 23-24</summary>
+                <div class="accordion-content">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <universal-footer></universal-footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

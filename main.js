@@ -3,11 +3,10 @@ function initializeParticles(containerElement, canvasElement) {
     const ctx = canvasElement.getContext('2d');
     let particlesArray = [];
     
-    // Track cursor interactions locally inside the element boundaries
     const mouse = {
         x: null,
         y: null,
-        radius: 120 // The radius of influence around your mouse pointer
+        radius: 120 
     };
 
     function resizeCanvas() {
@@ -16,20 +15,17 @@ function initializeParticles(containerElement, canvasElement) {
         initParticles();
     }
 
-    // Capture precise pointer bounds
     containerElement.addEventListener('mousemove', (e) => {
         const rect = containerElement.getBoundingClientRect();
         mouse.x = e.clientX - rect.left;
         mouse.y = e.clientY - rect.top;
     });
 
-    // Clear cursor position when it leaves the element area
     containerElement.addEventListener('mouseleave', () => {
         mouse.x = null;
         mouse.y = null;
     });
 
-    // Individual Particle Blueprints
     class Particle {
         constructor(x, y, directionX, directionY, size, color) {
             this.x = x;
@@ -40,7 +36,6 @@ function initializeParticles(containerElement, canvasElement) {
             this.color = color;
         }
 
-        // Render individual particle
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
@@ -48,7 +43,6 @@ function initializeParticles(containerElement, canvasElement) {
             ctx.fill();
         }
 
-        // Manage movement and pointer physics interaction loop
         update() {
             if (this.x > canvasElement.width || this.x < 0) {
                 this.directionX = -this.directionX;
@@ -57,7 +51,6 @@ function initializeParticles(containerElement, canvasElement) {
                 this.directionY = -this.directionY;
             }
 
-            // Interactive Physics Logic: Distance calculation from cursor position
             if (mouse.x !== null && mouse.y !== null) {
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
@@ -76,7 +69,6 @@ function initializeParticles(containerElement, canvasElement) {
         }
     }
 
-    // Populate the area with uniform, glowing node vectors
     function initParticles() {
         particlesArray = [];
         let numberOfParticles = Math.floor((canvasElement.width * canvasElement.height) / 4000);
@@ -94,7 +86,6 @@ function initializeParticles(containerElement, canvasElement) {
         }
     }
 
-    // Continuous Animation Loop
     function animate() {
         requestAnimationFrame(animate);
         ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
@@ -102,7 +93,6 @@ function initializeParticles(containerElement, canvasElement) {
         for (let i = 0; i < particlesArray.length; i++) {
             particlesArray[i].update();
         }
-        
         connectNodes();
     }
 
@@ -132,9 +122,25 @@ function initializeParticles(containerElement, canvasElement) {
     animate();
 }
 
-// Define Universal Header Component
 class UniversalHeader extends HTMLElement {
     connectedCallback() {
+        // --- UNIVERSAL FAVICON INJECTION ENGINE ---
+        // Dynamically verifies and injects the site favicon cleanly across all sub-pages
+        if (!document.querySelector("link[rel*='icon']")) {
+            // Standard Navigation Tab Favicon
+            const favicon = document.createElement('link');
+            favicon.rel = 'icon';
+            favicon.type = 'image/png';
+            favicon.href = 'image/logo.png';
+            document.head.appendChild(favicon);
+
+            // Apple Mobile Bookmark Icon Touch Support
+            const appleTouchIcon = document.createElement('link');
+            appleTouchIcon.rel = 'apple-touch-icon';
+            appleTouchIcon.href = 'image/logo.png';
+            document.head.appendChild(appleTouchIcon);
+        }
+
         this.innerHTML = `
         <header>
             <canvas class="particle-canvas"></canvas>
@@ -150,12 +156,13 @@ class UniversalHeader extends HTMLElement {
                                 <li><a href="advisor.html">Advisor Panel</a></li>
                                 <li><a href="standing-committee.html">Standing Committee</a></li>
                                 <li><a href="committee.html">Executive Committee</a></li>
+                                <li><a href="alumni.html">Alumni</a></li>
                                 <li><a href="teams.html">Teams</a></li>
                             </ul>
                         </li>
                         <li><a href="messages.html">Messages</a></li>
                         <li><a href="events.html">Events</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="achievement.html">Achievement</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
@@ -181,7 +188,6 @@ class UniversalHeader extends HTMLElement {
     }
 }
 
-// Define Universal Footer Component
 class UniversalFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -189,9 +195,9 @@ class UniversalFooter extends HTMLElement {
             <canvas class="particle-canvas"></canvas>
             <div class="footer-container">
                 <div class="footer-col">
-                    <a href="index.html" class="logo"> <img src="image/logo.png" height="50px" width="50px"></a>
+                    <a href="index.html" class="logo"> <img src="image/logo.png" height="60px" width="60px"></a>
                     <h3>GSTU Science Club</h3>
-                    <p>Inspiring innovation, research, and technical excellence among the bright minds of GSTU. Your workspace to shape the tomorrow.</p>
+                    <p>Inspiring innovation, research, and technical excellence among the bright minds of GSTU. Your workspace to shape tomorrow.</p>
                 </div>
                 
                 <div class="footer-col">
@@ -209,7 +215,7 @@ class UniversalFooter extends HTMLElement {
                     <ul>
                         <li><a href="committee.html">Executive Committee</a></li>
                         <li><a href="advisor.html">Advisor Panel</a></li>
-                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="achievement.html">Achievement</a></li>
                         <li><a href="contact.html">Contact Support</a></li>
                     </ul>
                 </div>
@@ -241,19 +247,103 @@ class UniversalFooter extends HTMLElement {
 customElements.define('universal-header', UniversalHeader);
 customElements.define('universal-footer', UniversalFooter);
 
-// --- DYNAMIC POSITION TRACKING FOR GLOW & FILL ---
+// --- DYNAMIC VECTOR INTERACTION ARRAYS ---
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Hero Title Vector Engine
     const glowTitle = document.querySelector('.interactive-glow-title');
     if (glowTitle) {
         glowTitle.addEventListener('mousemove', (e) => {
             const rect = glowTitle.getBoundingClientRect();
-            // Calculates mouse coordinates relative to the text element itself
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
-            // Injects positions dynamically into CSS variables
             glowTitle.style.setProperty('--x', `${x}px`);
             glowTitle.style.setProperty('--y', `${y}px`);
         });
+    }
+
+    // 2. Affiliation Spotlight Matrix
+    const affiliationCards = document.querySelectorAll('.interactive-affiliation-card');
+    affiliationCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        });
+    });
+
+    // 3. Q&A Spotlight Matrix
+    const qaCards = document.querySelectorAll('.interactive-qa-card');
+    qaCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        });
+    });
+
+    // 4. Two-Row Photo Gallery Slide Engine
+    const track = document.getElementById('galleryTrack');
+    const prevBtn = document.getElementById('galleryPrev');
+    const nextBtn = document.getElementById('galleryNext');
+    
+    if (track && prevBtn && nextBtn) {
+        let currentColumnIndex = 0;
+
+        function getItemsPerView() {
+            if (window.innerWidth <= 600) return 1;
+            if (window.innerWidth <= 968) return 2;
+            return 3; 
+        }
+
+        function updateSliderPosition() {
+            const items = track.querySelectorAll('.gallery-item');
+            const totalColumns = Math.ceil(items.length / 2); 
+            const columnsPerView = getItemsPerView();
+            const maxIndex = Math.max(0, totalColumns - columnsPerView);
+
+            if (currentColumnIndex > maxIndex) currentColumnIndex = maxIndex;
+            if (currentColumnIndex < 0) currentColumnIndex = 0;
+
+            if (totalColumns <= columnsPerView) {
+                track.style.transform = `translateX(0px)`;
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+                return;
+            }
+
+            const firstItem = items[0];
+            const itemWidth = firstItem.getBoundingClientRect().width;
+            const trackStyle = window.getComputedStyle(track);
+            const gap = parseFloat(trackStyle.gap) || 0;
+
+            const shiftAmount = currentColumnIndex * (itemWidth + gap);
+            track.style.transform = `translateX(-${shiftAmount}px)`;
+
+            prevBtn.disabled = currentColumnIndex === 0;
+            nextBtn.disabled = currentColumnIndex >= maxIndex;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentColumnIndex += getItemsPerView();
+            updateSliderPosition();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentColumnIndex -= getItemsPerView();
+            updateSliderPosition();
+        });
+
+        let resizeDebounceTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeDebounceTimeout);
+            resizeDebounceTimeout = setTimeout(updateSliderPosition, 100);
+        });
+
+        // Small timeout ensures element widths are fully computed by browser layout trees
+        setTimeout(updateSliderPosition, 150);
     }
 });

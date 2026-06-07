@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - GSTU Science Club</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Container for a single complete event milestone */
+        .single-event-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 5rem auto;
+            background: var(--card-bg, #ffffff);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(15, 83, 112, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 35px; /* Clean spacing between Title -> Photos -> Text */
+        }
+
+        /* 1. Event Title Styling (Top Middle) */
+        .event-header {
+            text-align: center;
+        }
+
+        .event-title {
+            font-size: 2.2rem;
+            color: var(--primary-color, #0f5370);
+            font-weight: 800;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .event-date {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* 2. Photos Grid Styling (Middle) */
+        .event-photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            justify-items: center;
+        }
+
+        .event-photo-card {
+            background: #fdfdfd;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .event-photo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-img-wrapper {
+            width: 100%;
+            height: 220px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .event-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-caption {
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* 3. Achievement Description Styling (Bottom) */
+        .achievement-text-block {
+            background: #fafafa;
+            border-radius: 12px;
+            padding: 30px 35px;
+            border-left: 5px solid var(--accent-color, #ffaa00);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-text-block:hover {
+            transform: translateX(5px);
+        }
+
+        .achievement-badge {
+            font-size: 0.95rem;
+            color: var(--accent-color, #ffaa00);
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .achievement-summary {
+            font-size: 1.4rem;
+            color: var(--primary-color, #0f5370);
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .achievement-description {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            color: #444;
+            margin: 0;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            .single-event-container {
+                padding: 20px;
+                gap: 25px;
+            }
+            .event-title {
+                font-size: 1.8rem;
+            }
+            .achievement-text-block {
+                padding: 20px;
+            }
+            .achievement-description {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <universal-header></universal-header>
+
+    <div class="section-container" style="margin-bottom: 3rem; text-align: center; padding-top: 2rem;">
+        <h2 class="section-title" style="font-size: 2.5rem; color: var(--primary-color, #0f5370);">Our Club Achievements</h2>
+        <p class="section-subtitle" style="color: #666;">Celebrating milestones, innovations, and triumphs of the GSTU Science Club community.</p>
+    </div>
+
+
+    <div class="single-event-container">
+        
+        <div class="event-header">
+            <h2 class="event-title">National Robotics Championship</h2>
+            <span class="event-date">October 2025</span>
+        </div>
+
+        <div class="event-photo-gallery">
+            <div class="event-photo-card">
+                <div class="event-img-wrapper">
+                    <img src="image/event1_photo1.png" alt="Team presenting the Rover prototype">
+                </div>
+                <div class="photo-caption">Presenting the Mars Rover Prototype</div>
+            </div>
+
+            <div class="event-photo-card">
+                <div class="event-img-wrapper">
+                    <img src="image/event1_photo2.png" alt="Testing phase in the arena">
+                </div>
+                <div class="photo-caption">Arena Navigation Testing Phase</div>
+            </div>
+
+            <div class="event-photo-card">
+                <div class="event-img-wrapper">
+                    <img src="image/event1_photo3.png" alt="Receiving the trophy">
+                </div>
+                <div class="photo-caption">Receiving the Champions Trophy</div>
+            </div>
+        </div>
+
+        <div class="achievement-text-block">
+            <p class="achievement-description">
+                Our robotics division successfully designed and built an autonomous terrain-navigating rover from scratch. Facing off against 45 universities nationwide, the GSTU Science Club development team successfully mapped out the simulated lunar environment in record time with 98% hazard evasion accuracy, bringing home the grand prize.
+            </p>
+        </div>
+
+    </div>
+    <div class="single-event-container">
+        
+        <div class="event-header">
+            <h2 class="event-title">Inter-University Tech Hackathon</h2>
+            <span class="event-date">February 2026</span>
+        </div>
+
+        <div class="event-photo-gallery">
+            <div class="event-photo-card">
+                <div class="event-img-wrapper">
+                    <img src="image/event2_photo1.png" alt="Software development team pitching code">
+                </div>
+                <div class="photo-caption">The 36-Hour Coding Sprint</div>
+            </div>
+
+            <div class="event-photo-card">
+                <div class="event-img-wrapper">
+                    <img src="image/event2_photo2.png" alt="Final UI prototype presentation">
+                </div>
+                <div class="photo-caption">UI/UX Demo Presentation Panel</div>
+            </div>
+        </div>
+
+        <div class="achievement-text-block">
+            <p class="achievement-description">
+                After a grueling 36-hour continuous programming marathon, our software innovation division produced an AI-powered smart grid distribution model. The system aims to intelligently minimize local power grid breakdowns using predictive machine learning modules, winning critical praise from global technology judges.
+            </p>
+        </div>
+
+    </div>
+    <universal-footer></universal-footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
