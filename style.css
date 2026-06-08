@@ -123,7 +123,7 @@ nav ul li a {
     color: var(--text-light);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
     padding: 5px 10px;
     border-radius: 4px;
     display: inline-flex;
@@ -131,8 +131,11 @@ nav ul li a {
     gap: 4px;
 }
 
+/* Enhanced Target Active Glow configuration rules */
 nav ul li a:hover, nav ul li a.active {
     color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(0, 168, 255, 0.75), 
+                 0 0 20px rgba(0, 168, 255, 0.4);
 }
 
 /* --- HOVER DROPDOWN INTERFACE ENGINE --- */
@@ -183,6 +186,7 @@ nav ul li a:hover, nav ul li a.active {
     background-color: rgba(0, 168, 255, 0.15);
     color: var(--accent-color);
     padding-left: 25px;
+    text-shadow: none; /* Disables high glow paths inside dark context lists */
 }
 
 /* Trigger reveal operations on interaction elements */
