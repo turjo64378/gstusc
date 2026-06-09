@@ -124,7 +124,6 @@ function initializeParticles(containerElement, canvasElement) {
 
 class UniversalHeader extends HTMLElement {
     connectedCallback() {
-        // --- UNIVERSAL FAVICON INJECTION ENGINE ---
         if (!document.querySelector("link[rel*='icon']")) {
             const favicon = document.createElement('link');
             favicon.rel = 'icon';
@@ -173,11 +172,29 @@ class UniversalHeader extends HTMLElement {
             currentPath = "index.html";
         }
         
+        // Dynamic Dropdown & Navigation Link Highlighter Engine
+        let isSubPageActive = false;
+        const committeeSubPages = ["advisor.html", "standing-committee.html", "alumni.html", "teams.html"];
+
         links.forEach(link => {
-            if (link.getAttribute('href') === currentPath) {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPath) {
                 link.classList.add('active');
+                
+                // Track if the matched current active page is part of the committee sub-list
+                if (committeeSubPages.includes(currentPath)) {
+                    isSubPageActive = true;
+                }
             }
         });
+
+        // Keep parent "Committee" text illuminated if a user is browsing inside its panel routes
+        if (isSubPageActive) {
+            const dropdownTrigger = this.querySelector('.dropdown-trigger');
+            if (dropdownTrigger) {
+                dropdownTrigger.classList.add('active');
+            }
+        }
 
         const headerContainer = this.querySelector('header');
         const headerCanvas = this.querySelector('.particle-canvas');
@@ -282,13 +299,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Two-Row Photo Gallery Slide Engine
+    // 4. Two-Row Photo Gallery Slide Engine (with Auto-Slide Mechanics)
     const track = document.getElementById('galleryTrack');
     const prevBtn = document.getElementById('galleryPrev');
     const nextBtn = document.getElementById('galleryNext');
     
     if (track && prevBtn && nextBtn) {
         let currentColumnIndex = 0;
+        let autoSlideInterval = null;
+        const SLIDE_DELAY = 2500; 
 
         function getItemsPerView() {
             if (window.innerWidth <= 600) return 1;
@@ -309,6 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 track.style.transform = `translateX(0px)`;
                 prevBtn.disabled = true;
                 nextBtn.disabled = true;
+                stopAutoSlide();
                 return;
             }
 
@@ -324,23 +344,76 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn.disabled = currentColumnIndex >= maxIndex;
         }
 
-        nextBtn.addEventListener('click', () => {
-            currentColumnIndex += getItemsPerView();
+        function handleNextSlide() {
+            const items = track.querySelectorAll('.gallery-item');
+            const totalColumns = Math.ceil(items.length / 2);
+            const columnsPerView = getItemsPerView();
+            const maxIndex = Math.max(0, totalColumns - columnsPerView);
+
+            if (currentColumnIndex >= maxIndex) {
+                currentColumnIndex = 0; 
+            } else {
+                currentColumnIndex += getItemsPerView();
+            }
             updateSliderPosition();
+        }
+
+        function handlePrevSlide() {
+            if (currentColumnIndex <= 0) {
+                const items = track.querySelectorAll('.gallery-item');
+                const totalColumns = Math.ceil(items.length / 2);
+                currentColumnIndex = Math.max(0, totalColumns - getItemsPerView());
+            } else {
+                currentColumnIndex -= getItemsPerView();
+            }
+            updateSliderPosition();
+        }
+
+        function startAutoSlide() {
+            const items = track.querySelectorAll('.gallery-item');
+            const totalColumns = Math.ceil(items.length / 2);
+            if (totalColumns <= getItemsPerView()) return;
+
+            stopAutoSlide();
+            autoSlideInterval = setInterval(handleNextSlide, SLIDE_DELAY);
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            handleNextSlide();
+            startAutoSlide(); 
         });
 
         prevBtn.addEventListener('click', () => {
-            currentColumnIndex -= getItemsPerView();
-            updateSliderPosition();
+            handlePrevSlide();
+            startAutoSlide(); 
         });
+
+        const galleryContainer = document.querySelector('.gallery-carousel-container');
+        if (galleryContainer) {
+            galleryContainer.addEventListener('mouseenter', stopAutoSlide);
+            galleryContainer.addEventListener('mouseleave', startAutoSlide);
+        }
 
         let resizeDebounceTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeDebounceTimeout);
-            resizeDebounceTimeout = setTimeout(updateSliderPosition, 100);
+            resizeDebounceTimeout = setTimeout(() => {
+                updateSliderPosition();
+                startAutoSlide();
+            }, 100);
         });
 
-        setTimeout(updateSliderPosition, 150);
+        setTimeout(() => {
+            updateSliderPosition();
+            startAutoSlide();
+        }, 150);
     }
 
     // 5. Advisor Spotlight Matrix Engine
