@@ -20,7 +20,7 @@
             margin-bottom: 25px;
             overflow: hidden;
             border: 1px solid #e2e8f0;
-            transition: box-shadow 0.2s ease;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
         }
         
         details[open] {
@@ -65,7 +65,7 @@
         .accordion-content {
             padding: 20px 25px;
             background-color: #fafbfc;
-            overflow-x: auto;
+            overflow-x: auto; /* Enables horizontal scroll on small devices */
         }
 
         /* Table Design Styling */
@@ -84,6 +84,10 @@
             font-size: 1rem;
         }
 
+        .list-table td {
+            color: var(--text-dark);
+        }
+
         .list-table th {
             background-color: var(--primary-color);
             color: var(--text-light);
@@ -96,6 +100,36 @@
 
         .list-table tr:hover {
             background-color: #f8fafc;
+        }
+
+        /* ==========================================
+           Dark Theme Adaptive Overrides Configuration
+           ========================================== */
+        [data-theme="dark"] details {
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] details[open] summary {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        [data-theme="dark"] .accordion-content {
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] .list-table {
+            background: transparent;
+        }
+
+        [data-theme="dark"] .list-table th, 
+        [data-theme="dark"] .list-table td {
+            border-bottom-color: rgba(255, 255, 255, 0.06);
+        }
+
+        [data-theme="dark"] .list-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.04);
         }
     </style>
 </head>
@@ -183,31 +217,35 @@
                 </div>
             </details>
 
-                        <details>
+            <details>
                 <summary>Standing Committee 23-24</summary>
                 <div class="accordion-content">
                    <h2 align="center">No standing committee was created</h2>
                 </div>
             </details>
-                        <details>
+
+            <details>
                 <summary>Standing Committee 22-23</summary>
                 <div class="accordion-content">
                    <h2 align="center">No standing committee was created</h2>
                 </div>
             </details>
-                        <details>
+
+            <details>
                 <summary>Standing Committee 21-22</summary>
                 <div class="accordion-content">
                    <h2 align="center">No standing committee was created</h2>
                 </div>
             </details>
-                        <details>
+
+            <details>
                 <summary>Standing Committee 20-21</summary>
                 <div class="accordion-content">
                    <h2 align="center">No standing committee was created</h2>
                 </div>
             </details>
-                        <details>
+
+            <details>
                 <summary>Standing Committee 19-20</summary>
                 <div class="accordion-content">
                    <h2 align="center">No standing committee was created</h2>

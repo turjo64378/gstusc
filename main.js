@@ -137,19 +137,30 @@ class UniversalHeader extends HTMLElement {
             document.head.appendChild(appleTouchIcon);
         }
 
+        // Standard vector SVG icons definition
+        const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+        const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+
         this.innerHTML = `
         <header>
             <canvas class="particle-canvas"></canvas>
             <div class="nav-container">
                 <a href="index.html" class="logo"> <img src="image/logo.webp" height="35px" width="35px">  GSTU Science Club</a>
-                <nav>
+                
+                <button class="menu-toggle" aria-label="Toggle Navigation Menu" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav id="nav-menu">
                     <ul id="nav-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="events.html">Events</a></li>
                         <li><a href="achievement.html">Achievement</a></li>
                         <li><a href="messages.html">Messages</a></li>
                         <li class="dropdown">
-                            <a href="committee.html" class="dropdown-trigger">Committee <span class="dropdown-arrow">&#9662;</span></a>
+                            <a href="#" class="dropdown-trigger">Committee <span class="dropdown-arrow">&#9662;</span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="advisor.html">Advisor Panel</a></li>
                                 <li><a href="standing-committee.html">Standing Committee</a></li>
@@ -160,12 +171,90 @@ class UniversalHeader extends HTMLElement {
                         </li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="about.html">About</a></li>
+                        <li class="theme-toggle-li">
+                            <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark and Light Mode">
+                                <span class="theme-icon"></span> <span class="theme-text">Dark</span>
+                            </button>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </header>
         `;
         
+        // Mobile Toggle Mechanics Engagement
+        const menuToggle = this.querySelector('.menu-toggle');
+        const navMenu = this.querySelector('#nav-menu');
+        const dropdownTrigger = this.querySelector('.dropdown-trigger');
+        const dropdownMenu = this.querySelector('.dropdown-menu');
+
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevents document click from instantly closing the menu during open action
+            menuToggle.classList.toggle('open');
+            navMenu.classList.toggle('open');
+        });
+
+        // Mobile Sidebar Hide Mechanics (Tap anywhere outside the sidebar/toggle to close)
+        document.addEventListener('click', (e) => {
+            if (navMenu && navMenu.classList.contains('open')) {
+                // If the click is outside the sidebar menu AND outside the hamburger toggle button
+                if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navMenu.classList.remove('open');
+                    menuToggle.classList.remove('open');
+                    
+                    // Reset the mobile dropdown arrow rotation if it was left open
+                    if (dropdownMenu && dropdownMenu.classList.contains('open')) {
+                        dropdownMenu.classList.remove('open');
+                        const arrow = dropdownTrigger.querySelector('.dropdown-arrow');
+                        if (arrow) arrow.style.transform = 'rotate(0deg)';
+                    }
+                }
+            }
+        });
+
+        // Mobile Dropdown Nested Target Handler
+        dropdownTrigger.addEventListener('click', (e) => {
+            if (window.innerWidth <= 900) {
+                e.preventDefault(); // Stop instant anchor routing shifts on compact layouts
+                dropdownMenu.classList.toggle('open');
+                
+                // Rotate arrow icon on mobile click actions
+                const arrow = dropdownTrigger.querySelector('.dropdown-arrow');
+                if(arrow) {
+                    arrow.style.transform = dropdownMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            }
+        });
+
+        // Light/Dark Theme Switch Engine Mechanics
+        const themeBtn = this.querySelector('#themeToggleBtn');
+        const themeIcon = themeBtn.querySelector('.theme-icon');
+        const themeText = themeBtn.querySelector('.theme-text');
+        
+        // Apply persistent state setup using localstorage records
+        const savedTheme = localStorage.getItem('gstu-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeButtonUI(savedTheme);
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('gstu-theme', newTheme);
+            updateThemeButtonUI(newTheme);
+        });
+
+        function updateThemeButtonUI(theme) {
+            if (theme === 'dark') {
+                themeIcon.innerHTML = sunIcon;
+                themeText.textContent = 'Light';
+            } else {
+                themeIcon.innerHTML = moonIcon;
+                themeText.textContent = 'Dark';
+            }
+        }
+
         const links = this.querySelectorAll('#nav-links a');
         let currentPath = window.location.pathname.split('/').pop();
         if (currentPath === "" || currentPath === "index.html") {
@@ -174,7 +263,7 @@ class UniversalHeader extends HTMLElement {
         
         // Dynamic Dropdown & Navigation Link Highlighter Engine
         let isSubPageActive = false;
-        const committeeSubPages = ["advisor.html", "standing-committee.html", "alumni.html", "teams.html"];
+        const committeeSubPages = ["advisor.html", "standing-committee.html", "committee.html", "alumni.html", "teams.html"];
 
         links.forEach(link => {
             const linkHref = link.getAttribute('href');
@@ -190,7 +279,6 @@ class UniversalHeader extends HTMLElement {
 
         // Keep parent "Committee" text illuminated if a user is browsing inside its panel routes
         if (isSubPageActive) {
-            const dropdownTrigger = this.querySelector('.dropdown-trigger');
             if (dropdownTrigger) {
                 dropdownTrigger.classList.add('active');
             }
@@ -205,11 +293,25 @@ class UniversalHeader extends HTMLElement {
 class UniversalFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
+        <style>
+            .footer-logo-link {
+                display: flex !important;
+                justify-content: flex-start;
+                margin-bottom: 15px;
+            }
+            @media (max-width: 900px) {
+                .footer-logo-link {
+                    justify-content: center !important;
+                }
+            }
+        </style>
         <footer>
             <canvas class="particle-canvas"></canvas>
             <div class="footer-container">
                 <div class="footer-col">
-                    <a href="index.html" class="logo"> <img src="image/logo.webp" height="60px" width="60px"></a>
+                    <a href="index.html" class="logo footer-logo-link"> 
+                        <img src="image/logo.webp" height="60px" width="60px">
+                    </a>
                     <h3>GSTU Science Club</h3>
                     <p>Inspiring innovation, research, and technical excellence among the bright minds of GSTU. Your workspace to shape tomorrow.</p>
                 </div>
@@ -307,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (track && prevBtn && nextBtn) {
         let currentColumnIndex = 0;
         let autoSlideInterval = null;
-        const SLIDE_DELAY = 2500; 
+        const SLIDE_DELAY = 4000; 
 
         function getItemsPerView() {
             if (window.innerWidth <= 600) return 1;

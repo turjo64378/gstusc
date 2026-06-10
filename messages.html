@@ -8,13 +8,15 @@
     <style>
         /* Custom styles to integrate horizontal message layouts with the global interactive .card system */
         .card h4 {
-            color: #666;
+            color: var(--text-muted);
             transition: color 0.4s ease;
         }
-        /* Safely color-invert the h4 title when the card container is hovered */
+        
+        /* Smoothly transition the designation text color when the card container is hovered */
         .card:hover h4 {
-            color: #cbd5e1;
+            color: var(--accent-color);
         }
+        
         .card p {
             transition: color 0.4s ease, border-color 0.4s ease;
         }

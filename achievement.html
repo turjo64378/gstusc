@@ -15,10 +15,11 @@
             border-radius: 16px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(15, 83, 112, 0.08);
+            border: 1px solid rgba(24, 134, 181, 0.12);
             display: flex;
             flex-direction: column;
             gap: 35px; /* Clean spacing between Title -> Photos -> Text */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         /* 1. Event Title Styling (Top Middle) */
@@ -33,12 +34,14 @@
             margin: 0 0 5px 0;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            transition: color 0.3s ease;
         }
 
         .event-date {
             font-size: 1rem;
-            color: #666;
+            color: var(--text-muted, #666);
             font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         /* 2. Photos Grid Styling (Middle) */
@@ -50,17 +53,18 @@
         }
 
         .event-photo-card {
-            background: #fdfdfd;
+            background: var(--bg-light, #fdfdfd);
             border-radius: 12px;
             padding: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(24, 134, 181, 0.12);
             width: 100%;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .event-photo-card:hover {
             transform: translateY(-5px);
+            border-color: var(--accent-color, #00a8ff);
         }
 
         .event-img-wrapper {
@@ -79,20 +83,21 @@
 
         .photo-caption {
             font-size: 0.9rem;
-            color: #555;
+            color: var(--text-muted, #555);
             font-weight: 500;
             text-align: center;
             margin-top: 10px;
+            transition: color 0.3s ease;
         }
 
         /* 3. Achievement Description Styling (Bottom) */
         .achievement-text-block {
-            background: #fafafa;
+            background: var(--bg-light, #fafafa);
             border-radius: 12px;
             padding: 30px 35px;
             border-left: 5px solid var(--accent-color, #ffaa00);
             text-align: left;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .achievement-text-block:hover {
@@ -106,6 +111,7 @@
             margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            transition: color 0.3s ease;
         }
 
         .achievement-summary {
@@ -113,13 +119,15 @@
             color: var(--primary-color, #0f5370);
             font-weight: 700;
             margin-bottom: 14px;
+            transition: color 0.3s ease;
         }
 
         .achievement-description {
             font-size: 1.1rem;
             line-height: 1.75;
-            color: #444;
+            color: var(--text-dark, #444);
             margin: 0;
+            transition: color 0.3s ease;
         }
 
         /* Mobile Responsive Adjustments */
@@ -146,11 +154,10 @@
 
     <div class="section-container" style="margin-bottom: 3rem; text-align: center; padding-top: 2rem;">
         <h2 class="section-title" style="font-size: 2.5rem; color: var(--primary-color, #0f5370);">Our Club Achievements</h2>
-        <p class="section-subtitle" style="color: #666;">Celebrating milestones, innovations, and triumphs of the GSTU Science Club community.</p>
+        <p class="section-subtitle" style="color: var(--text-muted, #666);">Celebrating milestones, innovations, and triumphs of the GSTU Science Club community.</p>
     </div>
 
-<div class="single-event-container">
-        
+    <div class="single-event-container">
         <div class="event-header">
             <h2 class="event-title">2nd GSTU National Science Fest 2025: "HALOGEN"</h2>
         </div>
@@ -180,12 +187,18 @@
 
         <div class="achievement-text-block">
             <p class="achievement-description">
-                The **2nd GSTU National Science Fest 2025: "HALOGEN"** was a mega two-day national event organized by the Gopalganj Science and Technology University (GSTU) Science Club under the motto *"Where Curiosity Meets Innovation."* Held under the leadership of the university's top administration, including Chief Guest and Vice Chancellor Prof. Dr. Hossain Uddin Shekhar, the festival brought together around 600 students across distinct school, college, and university segments. Competitions ranged from foundational project showcasing and drawing for younger groups to highly technical challenges like Artificial Intelligence (AI) competitions, Genomic Olympiads, and research presentations for university scholars. A defining highlight of the festival was the deployment of the **"Einstein Express"** science exhibition bus, a mobile laboratory initiative designed to bring hands-on scientific concepts and experiential learning directly to local school children.
+                <b>Organizer:</b> Gopalganj Science and Technology University (GSTU) Science Club.
+                <br>
+                <b>Event Title:</b> 2nd GSTU National Science Fest 2025: "HALOGEN".
+                <br>
+                <b>Participation:</b> Around 600 students across distinct school, college, and university segments.
+                <br>
+                <b>Highlights:</b> Featured diverse competitions ranging from foundational project showcasing to advanced AI challenges, highlighted by the deployment of the "Einstein Express" mobile laboratory bus to bring hands-on learning to local children.
             </p>
-        </div></div>
+        </div>
+    </div>
 
-        <div class="single-event-container">
-        
+    <div class="single-event-container">
         <div class="event-header">
             <h2 class="event-title">Science Olympiad 3.0</h2>
         </div>
@@ -215,18 +228,18 @@
 
         <div class="achievement-text-block">
             <p class="achievement-description">
-Organizer: Gopalganj Science and Technology University (GSTU) Science Club.
-<br>
-Event Title: Science Olympiad 3.0.
-<br>
-Participation: Approximately 150 students from school, college, and university levels participated in this edition of the Olympiad.
-<br>
-Highlights: The competitors showcased their merit, intelligence, and creativity by presenting solutions to various complex scientific problems, making the entire event lively and inspiring.
-</p>
-        </div></div>
+                <b>Organizer:</b> Gopalganj Science and Technology University (GSTU) Science Club.
+                <br>
+                <b>Event Title:</b> Science Olympiad 3.0.
+                <br>
+                <b>Participation:</b> Approximately 150 students from school, college, and university levels participated in this edition of the Olympiad.
+                <br>
+                <b>Highlights:</b> The competitors showcased their merit, intelligence, and creativity by presenting solutions to various complex scientific problems, making the entire event lively and inspiring.
+            </p>
+        </div>
+    </div>
 
     <div class="single-event-container">
-        
         <div class="event-header">
             <h2 class="event-title">Integrate Coastal Resilience Hub</h2>
         </div>
@@ -248,56 +261,26 @@ Highlights: The competitors showcased their merit, intelligence, and creativity 
 
             <div class="event-photo-card">
                 <div class="event-img-wrapper">
-                    <img src="https://scontent.fdac190-1.fna.fbcdn.net/v/t39.30808-6/568857106_1241127904701019_1584613910531258013_n.jpg?stp=dst-jpg_tt6&cstp=mx1072x782&ctp=s1072x782&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHkaStSoAU4h_ka8oDiqd9Jvkn76RB8UGe-SfvpEHxQZ-G0nHqjjei0BswwjiM6Q5jKWndfU6L1DWPA9-XQWWBD&_nc_ohc=mz_poRS3btgQ7kNvwGzL6MA&_nc_oc=AdqwyH-dVGH15U0mJhU03KspYAYLBuR5nA7hJJfSdMNej2fBqBoPfOY6D88TZodTZ7o&_nc_zt=23&_nc_ht=scontent.fdac190-1.fna&_nc_gid=TEEuLJSyn2Itx0ZV-pbi4A&_nc_ss=7b2a8&oh=00_Af-yPAPbu-t8FXYaIqvyzS9JnPjVkSA6J6wFsH9z3oIr6A&oe=6A2E36A8">
+                    <img src="https://scontent.fdac190-1.fna.fbcdn.net/v/t39.30808-6/568857106_1241127904701019_1584613910531258013_n.jpg?stp=dst-jpg_tt6&cstp=mx1072x782&ctp=s1072x782&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHkaStSoAU4h_ka8oDiqd9Jvkn76RB8UGe-SfvpEHxQZ-G0nHqjjei0BswwjiM6Q5jKWndfU6L1DWPA9-XQWWBD&_nc_ohc=mz_poRS3btgQ7kNvwGzL6MA&_nc_oc=AdqwyH-dVGH15U0mJhU03KspYAYLBuR5nA7hJJfSdMNej2fBqBoPfOY6D88TZodTZ7o&_nc_zt=23&_nc_ht=scontent.fdac190-1.fna&_nc_gid=TEEuLJSyn2Itx0ZV-pbi4A&_nc_ss=7b2a8&oh=00_Af-yPAPbu-t8FXYaIvyzS9JnPjVkSA6J6wFsH9z3oIr6A&oe=6A2E36A8">
                 </div>
                 <div class="photo-caption">Award receiving moment</div>
             </div>
         </div>
 
         <div class="achievement-text-block">
-            <p class="achievement-description"><b>The Achievement</b><br>
-The Gopalganj Science and Technology University (GSTU) Science Club won a research grant of 3 Lakh BDT from the "Youth Innovation Fund 2025: Sponsoring Green Idea" competition.
-<br>
-Funded by: The Government of Sweden.
-<br>
-Organized by: International Centre for Climate Change and Development (ICCCAD).
-<br><br>
-<b>The Project</b><br>
-Title: Integrated Coastal Resilience Hub: Citizen Science for Climate Adaptation and Pollution Change Management.
-<br>
-Objective: To gather valuable data and insights on environmental conditions and the impacts of climate change in the coastal region.
-<br>
-Supervisor: Dr. Neaz Al Hasan (Assistant Professor & Chairman, Department of Fisheries and Marine Bioscience, GSTU; Advisor, GSTU Science Club).
-<br><br>
-<b>The Field Trip & Current Activity</b><br>
-As part of this ICCCAD project, the GSTU Science Club team has embarked on a field trip to the Sundarbans for data collection and citizen science activities. Over a span of two days, the team will be actively collecting environmental data from two specific areas:
-<br>
-Dublar Char
-<br>
-Hiron Point
-<br><br>
-<b>Project Team Members</b><br>
-The research team consists of five students from various disciplines:
-<br>
-Muhammad Nahidul Islam (Civil Engineering)
-<br>
-Ariful Islam (Civil Engineering)
-<br>
-Sadman Bin Kawsar (Civil Engineering)
-<br>
-Md. Sakibul Alam (Biochemistry and Molecular Biology)
-<br>
-S. M. Nishan (Fisheries and Marine Bioscience)</p>
-                
+            <p class="achievement-description">
+                <b>Recipient:</b> Gopalganj Science and Technology University (GSTU) Science Club.
+                <br>
+                <b>Project Title:</b> Integrated Coastal Resilience Hub: Citizen Science for Climate Adaptation and Pollution Change Management.
+                <br>
+                <b>Funding & Grant:</b> Awarded a 3 Lakh BDT research grant from the "Youth Innovation Fund 2025: Sponsoring Green Idea" competition, organized by ICCCAD and funded by the Government of Sweden.
+                <br>
+                <b>Highlights:</b> A multidisciplinary team of 5 student researchers, supervised by Dr. Neaz Al Hasan, embarked on a two-day field trip to the Sundarbans (Dublar Char and Hiron Point) to collect critical environmental data and lead citizen science initiatives.
             </p>
         </div>
-
-    </div>
     </div>
 
-    
-        <div class="single-event-container">
-        
+    <div class="single-event-container">
         <div class="event-header">
             <h2 class="event-title">𝗣𝗹𝗮𝘀𝘁𝗶𝗰 𝗖𝗼𝗹𝗹𝗲𝗰𝘁𝗶𝗼𝗻 𝗖𝗮𝗺𝗽𝗮𝗶𝗴𝗻 𝟮𝟬𝟮𝟱</h2>
             <span class="event-date">February 2026</span>
@@ -321,15 +304,17 @@ S. M. Nishan (Fisheries and Marine Bioscience)</p>
 
         <div class="achievement-text-block">
             <p class="achievement-description">
-Campaign Title: "From Campus to Coast: Cutting Plastic for Climate Action" (Plastic Collection Campaign-2025).
-<br>
-Date: May 11, 2025.
-<br>
-Core Objective: A dedicated effort by the GSTU Science Club to reduce plastic pollution within the university campus.
-<br>
-Leadership: The initiative was led by Dr. Neaz Al Hasan, Chairman of the Department of Fisheries and Marine Bioscience (FMB) and Advisor to the GSTU Science Club.
+                <b>Campaign Title:</b> "From Campus to Coast: Cutting Plastic for Climate Action" (Plastic Collection Campaign-2025).
+                <br>
+                <b>Date:</b> May 11, 2025.
+                <br>
+                <b>Core Objective:</b> A dedicated effort by the GSTU Science Club to reduce plastic pollution within the university campus.
+                <br>
+                <b>Leadership:</b> The initiative was led by Dr. Neaz Al Hasan, Chairman of the Department of Fisheries and Marine Bioscience (FMB) and Advisor to the GSTU Science Club.
             </p>
-        </div></div>
+        </div>
+    </div>
+
     <universal-footer></universal-footer>
 
     <script src="main.js"></script>
