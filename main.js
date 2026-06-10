@@ -127,13 +127,13 @@ class UniversalHeader extends HTMLElement {
         if (!document.querySelector("link[rel*='icon']")) {
             const favicon = document.createElement('link');
             favicon.rel = 'icon';
-            favicon.type = 'image/png';
-            favicon.href = 'image/logo.png';
+            favicon.type = 'image/webp';
+            favicon.href = 'image/logo.webp';
             document.head.appendChild(favicon);
 
             const appleTouchIcon = document.createElement('link');
             appleTouchIcon.rel = 'apple-touch-icon';
-            appleTouchIcon.href = 'image/logo.png';
+            appleTouchIcon.href = 'image/logo.webp';
             document.head.appendChild(appleTouchIcon);
         }
 
@@ -141,7 +141,7 @@ class UniversalHeader extends HTMLElement {
         <header>
             <canvas class="particle-canvas"></canvas>
             <div class="nav-container">
-                <a href="index.html" class="logo"> <img src="image/logo.png" height="35px" width="35px">  GSTU Science Club</a>
+                <a href="index.html" class="logo"> <img src="image/logo.webp" height="35px" width="35px">  GSTU Science Club</a>
                 <nav>
                     <ul id="nav-links">
                         <li><a href="index.html">Home</a></li>
@@ -209,7 +209,7 @@ class UniversalFooter extends HTMLElement {
             <canvas class="particle-canvas"></canvas>
             <div class="footer-container">
                 <div class="footer-col">
-                    <a href="index.html" class="logo"> <img src="image/logo.png" height="60px" width="60px"></a>
+                    <a href="index.html" class="logo"> <img src="image/logo.webp" height="60px" width="60px"></a>
                     <h3>GSTU Science Club</h3>
                     <p>Inspiring innovation, research, and technical excellence among the bright minds of GSTU. Your workspace to shape tomorrow.</p>
                 </div>
@@ -238,10 +238,10 @@ class UniversalFooter extends HTMLElement {
                     <h3>Connect With Us</h3>
                     <p>Follow our news feeds for instant updates on current hackathons and assignments.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/GSTUSC" target="_blank" aria-label="Facebook"><img src="image/facebook.png" width="35px" height="35px"></a>
-                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><img src="image/linkedin.png" width="35px" height="35px"></a>
-                        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><img src="image/instagram.png" width="35px" height="35px"></a>
-                        <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="image/youtube.png" width="35px" height="35px"></a>
+                        <a href="https://www.facebook.com/GSTUSC" target="_blank" aria-label="Facebook"><img src="image/facebook.webp" width="35px" height="35px"></a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><img src="image/linkedin.webp" width="35px" height="35px"></a>
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><img src="image/instagram.webp" width="35px" height="35px"></a>
+                        <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="image/youtube.webp" width="35px" height="35px"></a>
                     </div>
                 </div>
             </div>

@@ -203,7 +203,7 @@ nav ul li a:hover, nav ul li a.active {
 
 /* Hero Section */
 #hero {
-    background: linear-gradient(rgba(15, 32, 39, 0.85), rgba(32, 58, 67, 0.85)), url(image/hero.gif) center/cover;
+    background: linear-gradient(rgba(15, 32, 39, 0.85), rgba(32, 58, 67, 0.85)), url(image/hero.webp) center/cover;
     height: auto;
     min-height: calc(100vh - 70px);
     display: flex;
