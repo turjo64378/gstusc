@@ -163,8 +163,8 @@ class UniversalHeader extends HTMLElement {
                             <a href="#" class="dropdown-trigger">Committee <span class="dropdown-arrow">&#9662;</span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="advisor.html">Advisor Panel</a></li>
-                                <li><a href="standing-committee.html">Standing Committee</a></li>
                                 <li><a href="committee.html">Executive Committee</a></li>
+                                <li><a href="standing-committee.html">Standing Committee</a></li>
                                 <li><a href="alumni.html">Alumni</a></li>
                                 <li><a href="teams.html">Teams</a></li>
                             </ul>
@@ -341,9 +341,9 @@ class UniversalFooter extends HTMLElement {
                     <p>Follow our news feeds for instant updates on current hackathons and assignments.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/GSTUSC" target="_blank" aria-label="Facebook"><img src="image/facebook.webp" width="35px" height="35px"></a>
-                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><img src="image/linkedin.webp" width="35px" height="35px"></a>
+                        <a href="https://www.linkedin.com/company/gstu-science-club" target="_blank" aria-label="LinkedIn"><img src="image/linkedin.webp" width="35px" height="35px"></a>
                         <a href="https://instagram.com" target="_blank" aria-label="Instagram"><img src="image/instagram.webp" width="35px" height="35px"></a>
-                        <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="image/youtube.webp" width="35px" height="35px"></a>
+                        <a href="https://www.youtube.com/@gstuscienceclub" target="_blank" aria-label="YouTube"><img src="image/youtube.webp" width="35px" height="35px"></a>
                     </div>
                 </div>
             </div>
