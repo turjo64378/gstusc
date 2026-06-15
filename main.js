@@ -137,7 +137,6 @@ class UniversalHeader extends HTMLElement {
             document.head.appendChild(appleTouchIcon);
         }
 
-        // Standard vector SVG icons definition
         const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
         const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
 
@@ -182,27 +181,23 @@ class UniversalHeader extends HTMLElement {
         </header>
         `;
         
-        // Mobile Toggle Mechanics Engagement
         const menuToggle = this.querySelector('.menu-toggle');
         const navMenu = this.querySelector('#nav-menu');
         const dropdownTrigger = this.querySelector('.dropdown-trigger');
         const dropdownMenu = this.querySelector('.dropdown-menu');
 
         menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevents document click from instantly closing the menu during open action
+            e.stopPropagation(); 
             menuToggle.classList.toggle('open');
             navMenu.classList.toggle('open');
         });
 
-        // Mobile Sidebar Hide Mechanics (Tap anywhere outside the sidebar/toggle to close)
         document.addEventListener('click', (e) => {
             if (navMenu && navMenu.classList.contains('open')) {
-                // If the click is outside the sidebar menu AND outside the hamburger toggle button
                 if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                     navMenu.classList.remove('open');
                     menuToggle.classList.remove('open');
                     
-                    // Reset the mobile dropdown arrow rotation if it was left open
                     if (dropdownMenu && dropdownMenu.classList.contains('open')) {
                         dropdownMenu.classList.remove('open');
                         const arrow = dropdownTrigger.querySelector('.dropdown-arrow');
@@ -212,13 +207,11 @@ class UniversalHeader extends HTMLElement {
             }
         });
 
-        // Mobile Dropdown Nested Target Handler
         dropdownTrigger.addEventListener('click', (e) => {
             if (window.innerWidth <= 900) {
-                e.preventDefault(); // Stop instant anchor routing shifts on compact layouts
+                e.preventDefault(); 
                 dropdownMenu.classList.toggle('open');
                 
-                // Rotate arrow icon on mobile click actions
                 const arrow = dropdownTrigger.querySelector('.dropdown-arrow');
                 if(arrow) {
                     arrow.style.transform = dropdownMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
@@ -226,12 +219,10 @@ class UniversalHeader extends HTMLElement {
             }
         });
 
-        // Light/Dark Theme Switch Engine Mechanics
         const themeBtn = this.querySelector('#themeToggleBtn');
         const themeIcon = themeBtn.querySelector('.theme-icon');
         const themeText = themeBtn.querySelector('.theme-text');
         
-        // Apply persistent state setup using localstorage records
         const savedTheme = localStorage.getItem('gstu-theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         updateThemeButtonUI(savedTheme);
@@ -261,7 +252,6 @@ class UniversalHeader extends HTMLElement {
             currentPath = "index.html";
         }
         
-        // Dynamic Dropdown & Navigation Link Highlighter Engine
         let isSubPageActive = false;
         const committeeSubPages = ["advisor.html", "standing-committee.html", "committee.html", "alumni.html", "teams.html"];
 
@@ -269,15 +259,12 @@ class UniversalHeader extends HTMLElement {
             const linkHref = link.getAttribute('href');
             if (linkHref === currentPath) {
                 link.classList.add('active');
-                
-                // Track if the matched current active page is part of the committee sub-list
                 if (committeeSubPages.includes(currentPath)) {
                     isSubPageActive = true;
                 }
             }
         });
 
-        // Keep parent "Committee" text illuminated if a user is browsing inside its panel routes
         if (isSubPageActive) {
             if (dropdownTrigger) {
                 dropdownTrigger.classList.add('active');
@@ -365,7 +352,6 @@ customElements.define('universal-footer', UniversalFooter);
 
 // --- DYNAMIC VECTOR INTERACTION ARRAYS ---
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Hero Title Vector Engine
     const glowTitle = document.querySelector('.interactive-glow-title');
     if (glowTitle) {
         glowTitle.addEventListener('mousemove', (e) => {
@@ -377,7 +363,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Affiliation Spotlight Matrix
     const affiliationCards = document.querySelectorAll('.interactive-affiliation-card');
     affiliationCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -389,7 +374,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Q&A Spotlight Matrix
     const qaCards = document.querySelectorAll('.interactive-qa-card');
     qaCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -401,7 +385,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Two-Row Photo Gallery Slide Engine (with Auto-Slide Mechanics)
     const track = document.getElementById('galleryTrack');
     const prevBtn = document.getElementById('galleryPrev');
     const nextBtn = document.getElementById('galleryNext');
@@ -518,7 +501,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     }
 
-    // 5. Advisor Spotlight Matrix Engine
     const advisorCards = document.querySelectorAll('.interactive-advisor-card');
     advisorCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {

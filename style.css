@@ -80,8 +80,8 @@ body {
 
 .advisor-photo {
     width: 100%;
-    max-width: 200px; /* Prevents the frame from stretching too wide */
-    height: 250px; /* Keeps the uniform height constraint */
+    max-width: 200px; 
+    height: 250px; 
     margin-bottom: 18px; 
     border-radius: 12px; 
     overflow: hidden;
@@ -110,8 +110,9 @@ header {
 }
 
 .nav-container {
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: none;
+    padding: 0 10%;      
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -120,14 +121,16 @@ header {
     z-index: 2;
 }
 
+/* FIX: Added white-space prevention and responsive fluid text constraints */
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 4.5vw, 1.5rem); 
     font-weight: bold;
     text-decoration: none;
     color: var(--text-light);
+    white-space: nowrap; 
 }
 
 nav ul {
@@ -138,7 +141,7 @@ nav ul {
 
 nav ul li {
     margin-left: 20px;
-    position: relative; /* Anchor point for dropdown menu items */
+    position: relative; 
 }
 
 nav ul li a {
@@ -153,14 +156,12 @@ nav ul li a {
     gap: 4px;
 }
 
-/* Enhanced Target Active Glow configuration rules */
 nav ul li a:hover, nav ul li a.active {
     color: var(--accent-color);
     text-shadow: 0 0 10px rgba(0, 168, 255, 0.75), 
                  0 0 20px rgba(0, 168, 255, 0.4);
 }
 
-/* Theme Switch Toggle Button Container Styles */
 .theme-toggle-li {
     margin-left: 25px;
     display: flex;
@@ -189,7 +190,7 @@ nav ul li a:hover, nav ul li a.active {
     transform: scale(1.05);
 }
 
-/* --- HOVER DROPDOWN INTERFACE ENGINE --- */
+/* Dropdown Menu Interface */
 .dropdown-arrow {
     font-size: 0.75rem;
     transition: transform 0.3s ease;
@@ -208,8 +209,6 @@ nav ul li a:hover, nav ul li a.active {
     padding: 8px 0;
     display: block;
     flex-direction: column;
-    
-    /* Initially Hidden States */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -237,10 +236,9 @@ nav ul li a:hover, nav ul li a.active {
     background-color: rgba(0, 168, 255, 0.15);
     color: var(--accent-color);
     padding-left: 25px;
-    text-shadow: none; /* Disables high glow paths inside dark context lists */
+    text-shadow: none; 
 }
 
-/* Trigger reveal operations on interaction elements (Desktop Only via media query protection) */
 @media (min-width: 901px) {
     .dropdown:hover .dropdown-menu {
         opacity: 1;
@@ -268,7 +266,6 @@ nav ul li a:hover, nav ul li a.active {
     padding: 40px 20px;
 }
 
-/* Adaptive Title Interaction */
 .interactive-glow-title {
     font-size: 3.5rem;
     margin-bottom: 15px;
@@ -337,10 +334,7 @@ nav ul li a:hover, nav ul li a.active {
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     cursor: default;
-    transition: background-color 0.4s ease,
-                transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
-                box-shadow 0.3s ease,
-                border-color 0.3s ease;
+    transition: background-color 0.4s ease, transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .stat-box h2 {
@@ -443,10 +437,7 @@ nav ul li a:hover, nav ul li a.active {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     text-align: center;
-    transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                color 0.4s ease, 
-                transform 0.3s ease, 
-                box-shadow 0.3s ease;
+    transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card h3 {
@@ -471,8 +462,7 @@ nav ul li a:hover, nav ul li a.active {
 .card:hover h3 { color: var(--text-light); }
 .card:hover p, .card:hover b { color: #e2e8f0; }
 
-
-/* --- CAROUSEL TWO-ROW PHOTO GALLERY --- */
+/* Photo Gallery Carousel */
 .gallery-carousel-container {
     position: relative;
     display: flex;
@@ -488,7 +478,6 @@ nav ul li a:hover, nav ul li a.active {
     padding: 10px 0;
 }
 
-/* Structured Horizontal Grid Tracking System */
 .gallery-double-row-track {
     display: grid;
     grid-template-rows: repeat(2, 250px);
@@ -499,7 +488,6 @@ nav ul li a:hover, nav ul li a.active {
     will-change: transform;
 }
 
-/* Gallery Individual Frame Blocks */
 .gallery-item {
     overflow: hidden;
     border-radius: 12px;
@@ -510,9 +498,7 @@ nav ul li a:hover, nav ul li a.active {
     width: 100%;
     border: 1px solid rgba(15, 83, 112, 0.1);
     cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                box-shadow 0.4s ease, 
-                border-color 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
 .gallery-item img {
@@ -521,8 +507,7 @@ nav ul li a:hover, nav ul li a.active {
     object-fit: cover;
     display: block;
     transform: scale(1);
-    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                filter 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.4s ease;
 }
 
 .gallery-caption {
@@ -537,9 +522,7 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: 600;
     text-align: center;
     transform: translateY(0);
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                color 0.3s ease, 
-                background 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s ease, background 0.4s ease;
     z-index: 2;
 }
 
@@ -559,7 +542,6 @@ nav ul li a:hover, nav ul li a.active {
     background: linear-gradient(transparent, rgba(20, 58, 67, 0.98));
 }
 
-/* Side Navigation Shifts Utility Elements */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -599,8 +581,7 @@ nav ul li a:hover, nav ul li a.active {
 .prev-btn { left: 0; }
 .next-btn { right: 0; }
 
-
-/* --- SYNCHRONIZED INTERACTIVE QA SECTION CARDS --- */
+/* Interactive Cards Matrix */
 .qa-item {
     position: relative;
     overflow: hidden;
@@ -610,10 +591,7 @@ nav ul li a:hover, nav ul li a.active {
     border: 1px solid rgba(24, 134, 181, 0.12);
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     margin-bottom: 5px;
-    transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                box-shadow 0.3s ease, 
-                border-color 0.3s ease;
+    transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .qa-item h4 {
@@ -650,7 +628,6 @@ nav ul li a:hover, nav ul li a.active {
     pointer-events: none;
 }
 
-/* Blue Transform Theme on Hover */
 .qa-item:hover {
     background-color: var(--primary-color);
     transform: translateY(-4px);
@@ -658,19 +635,10 @@ nav ul li a:hover, nav ul li a.active {
     box-shadow: 0 10px 24px rgba(15, 83, 112, 0.25);
 }
 
-.qa-item:hover h4 {
-    color: var(--text-light);
-}
+.qa-item:hover h4 { color: var(--text-light); }
+.qa-item:hover p { color: #e2e8f0; }
+.qa-item:hover::before { opacity: 1; }
 
-.qa-item:hover p {
-    color: #e2e8f0;
-}
-
-.qa-item:hover::before {
-    opacity: 1;
-}
-
-/* --- SYNCHRONIZED INTERACTIVE AFFILIATION WIDE CARDS --- */
 .affiliation-wide-card {
     display: flex; 
     align-items: center; 
@@ -683,10 +651,7 @@ nav ul li a:hover, nav ul li a.active {
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-                transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                border-color 0.3s ease, 
-                box-shadow 0.3s ease;
+    transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .affiliation-badge {
@@ -706,7 +671,6 @@ nav ul li a:hover, nav ul li a.active {
     transition: color 0.3s ease;
 }
 
-/* Targets targeted child blocks in details section context */
 [data-theme="dark"] .affiliation-details h3 {
     color: var(--text-dark);
 }
@@ -733,7 +697,6 @@ nav ul li a:hover, nav ul li a.active {
     pointer-events: none;
 }
 
-/* Blue Transform Theme on Hover */
 .affiliation-wide-card:hover {
     background-color: var(--primary-color);
     transform: translateY(-5px);
@@ -741,23 +704,12 @@ nav ul li a:hover, nav ul li a.active {
     box-shadow: 0 14px 30px rgba(15, 83, 112, 0.25);
 }
 
-.affiliation-wide-card:hover .affiliation-badge {
-    color: var(--accent-color);
-}
+.affiliation-wide-card:hover .affiliation-badge { color: var(--accent-color); }
+.affiliation-wide-card:hover .affiliation-details h3 { color: var(--text-light); }
+.affiliation-wide-card:hover .affiliation-details p { color: #e2e8f0; }
+.affiliation-wide-card:hover::before { opacity: 1; }
 
-.affiliation-wide-card:hover .affiliation-details h3 {
-    color: var(--text-light);
-}
-
-.affiliation-wide-card:hover .affiliation-details p {
-    color: #e2e8f0;
-}
-
-.affiliation-wide-card:hover::before {
-    opacity: 1;
-}
-
-/* Footer Styles */
+/* Footer Area styling */
 footer {
     background: linear-gradient(-45deg, #112127, var(--secondary-color), #2c4f5c, var(--secondary-color), #112127);
     background-size: 400% 400%;
@@ -771,8 +723,9 @@ footer {
 }
 
 .footer-container {
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: none;
+    padding: 0 10%;      
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -846,14 +799,13 @@ footer {
     z-index: 2;
 }
 
-/* Mobile Responsiveness Framework */
+/* Responsive Media Viewports */
 @media (max-width: 968px) {
     .gallery-double-row-track {
         grid-auto-columns: calc(50% - 12px);
     }
 }
 
-/* MOBILE AND TABLET DRIVEN VIEWPORT SPECIFICATION SCOPES */
 @media (max-width: 900px) {
     universal-header { 
         position: fixed; 
@@ -863,18 +815,15 @@ footer {
         z-index: 2000;
     }
     
-    body { 
-        padding-top: 80px; 
-    }
+    body { padding-top: 80px; }
     
     .nav-container { 
         flex-direction: row; 
         justify-content: space-between;
-        width: 90%;
-        padding: 5px 0;
+        width: 100%;
+        padding: 5px 6%; 
     }
 
-    /* Target the interactive mobile button framework */
     .menu-toggle {
         display: flex !important;
         flex-direction: column;
@@ -896,18 +845,10 @@ footer {
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
-    /* Transform configuration code routes for 'X' icon */
-    .menu-toggle.open span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    .menu-toggle.open span:nth-child(2) {
-        opacity: 0;
-    }
-    .menu-toggle.open span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
+    .menu-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* Right-Side Slide-Out Drawer Navigation Panel */
     nav {
         position: fixed;
         top: 0;
@@ -925,22 +866,9 @@ footer {
         overflow-y: auto;
     }
 
-    nav.open {
-        transform: translateX(0);
-        visibility: visible;
-    }
-
-    nav ul { 
-        flex-direction: column;
-        width: 100%;
-        padding: 15px 0; 
-        align-items: stretch;
-    }
-    
-    nav ul li { 
-        margin: 0; 
-        width: 100%;
-    }
+    nav.open { transform: translateX(0); visibility: visible; }
+    nav ul { flex-direction: column; width: 100%; padding: 15px 0; align-items: stretch; }
+    nav ul li { margin: 0; width: 100%; }
 
     nav ul li a {
         display: flex;
@@ -951,19 +879,9 @@ footer {
         border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
-    /* Mobile theme switcher configurations inside sliding drawer */
-    .theme-toggle-li {
-        margin: 15px 24px 0 24px;
-        justify-content: center;
-    }
-    
-    .theme-toggle-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 10px 0;
-    }
+    .theme-toggle-li { margin: 15px 24px 0 24px; justify-content: center; }
+    .theme-toggle-btn { width: 100%; justify-content: center; padding: 10px 0; }
 
-    /* Mobile Layer Nested Submenu Lists Overrides */
     .dropdown-menu {
         position: static;
         transform: none !important;
@@ -979,15 +897,10 @@ footer {
         border-left: 4px solid var(--accent-color);
     }
 
-    .dropdown-menu.open {
-        display: block;
-    }
+    .dropdown-menu.open { display: block; }
+    .dropdown-menu li a { padding-left: 40px; }
 
-    .dropdown-menu li a { 
-        padding-left: 40px;
-    }
-
-    .footer-container { text-align: center; }
+    .footer-container { text-align: center; padding: 0 6%; }
     .social-links { justify-content: center; }
     .hero-stats { gap: 12px; }
     .stat-box { min-width: 140px; padding: 15px 20px; }
@@ -1003,17 +916,9 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .gallery-carousel-container {
-        padding: 0 40px;
-    }
-    .gallery-double-row-track {
-        grid-auto-columns: 100%;
-    }
-    .carousel-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
+    .gallery-carousel-container { padding: 0 40px; }
+    .gallery-double-row-track { grid-auto-columns: 100%; }
+    .carousel-btn { width: 35px; height: 35px; font-size: 1rem; }
 }
 
 /* Contact Social Buttons */
