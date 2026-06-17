@@ -6,63 +6,36 @@
     <title>Standing Committee - GSTU Science Club</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Collapsible Accordion Custom Styling */
-        .committee-accordion {
+        /* Committee Panel Custom Styling */
+        .committee-panel-container {
             max-width: 1100px;
             margin: 0 auto;
             text-align: left;
         }
         
-        details {
+        .committee-panel {
             background: var(--card-bg);
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
             margin-bottom: 25px;
             overflow: hidden;
             border: 1px solid #e2e8f0;
             transition: box-shadow 0.2s ease, border-color 0.2s ease;
         }
         
-        details[open] {
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-        }
-        
-        summary {
+        .panel-title {
             padding: 20px 25px;
             font-size: 1.3rem;
             font-weight: 600;
             color: var(--primary-color);
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--card-bg);
-            user-select: none;
-        }
-        
-        summary::-webkit-details-marker {
-            display: none;
-        }
-        
-        summary::after {
-            content: '▶';
-            font-size: 0.9rem;
-            display: inline-block;
-            transition: transform 0.2s ease;
-            color: var(--accent-color);
-        }
-        
-        details[open] summary::after {
-            transform: rotate(90deg);
-        }
-        
-        details[open] summary {
-            border-bottom: 1px solid #e2e8f0;
             background-color: #fdfdfd;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: center; /* Centers the committee title */
+            user-select: none;
+            margin: 0;
         }
         
-        .accordion-content {
+        .panel-content {
             padding: 20px 25px;
             background-color: #fafbfc;
             overflow-x: auto; /* Enables horizontal scroll on small devices */
@@ -105,17 +78,17 @@
         /* ==========================================
            Dark Theme Adaptive Overrides Configuration
            ========================================== */
-        [data-theme="dark"] details {
+        [data-theme="dark"] .committee-panel {
             border-color: rgba(255, 255, 255, 0.08);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        [data-theme="dark"] details[open] summary {
+        [data-theme="dark"] .panel-title {
             border-bottom-color: rgba(255, 255, 255, 0.08);
             background-color: rgba(255, 255, 255, 0.02);
         }
 
-        [data-theme="dark"] .accordion-content {
+        [data-theme="dark"] .panel-content {
             background-color: rgba(0, 0, 0, 0.15);
         }
 
@@ -141,11 +114,10 @@
         <h2 class="section-title">Standing Committee</h2>
         <p class="section-subtitle">Explore our permanent committee records responsible for long-term policy implementations, constitutional governance, and stability.</p>
 
-        <div class="committee-accordion">
-            
-            <details open>
-                <summary>Standing Committee 25-26</summary>
-                <div class="accordion-content">
+        <div class="committee-panel-container">
+            <div class="committee-panel">
+                <h3 class="panel-title">Standing Committee Members</h3>
+                <div class="panel-content">
                     <table class="list-table">
                         <thead>
                             <tr>
@@ -208,49 +180,7 @@
                         </tbody>
                     </table>
                 </div>
-            </details>
-
-            <details>
-                <summary>Standing Committee 24-25</summary>
-                <div class="accordion-content">
-                   <h2 align="center">No standing committee was created</h2>
-                </div>
-            </details>
-
-            <details>
-                <summary>Standing Committee 23-24</summary>
-                <div class="accordion-content">
-                   <h2 align="center">No standing committee was created</h2>
-                </div>
-            </details>
-
-            <details>
-                <summary>Standing Committee 22-23</summary>
-                <div class="accordion-content">
-                   <h2 align="center">No standing committee was created</h2>
-                </div>
-            </details>
-
-            <details>
-                <summary>Standing Committee 21-22</summary>
-                <div class="accordion-content">
-                   <h2 align="center">No standing committee was created</h2>
-                </div>
-            </details>
-
-            <details>
-                <summary>Standing Committee 20-21</summary>
-                <div class="accordion-content">
-                   <h2 align="center">No standing committee was created</h2>
-                </div>
-            </details>
-
-            <details>
-                <summary>Standing Committee 19-20</summary>
-                <div class="accordion-content">
-                   <h2 align="center">No standing committee was created</h2>
-                </div>
-            </details>
+            </div>
         </div>
     </div>
 
