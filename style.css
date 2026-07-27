@@ -12,6 +12,9 @@
     /* Social Button Theme Variables */
     --btn-social-bg: #f0f2f5;
     --btn-social-text: #1c1e21;
+
+    --brand-primary: #1886b5;
+    --brand-hover: #005678;
 }
 
 /* Dark Theme Variables Configuration Overrides */
@@ -121,7 +124,6 @@ header {
     z-index: 2;
 }
 
-/* FIX: Added white-space prevention and responsive fluid text constraints */
 .logo {
     display: flex;
     align-items: center;
@@ -524,6 +526,7 @@ nav ul li a:hover, nav ul li a.active {
     transform: translateY(0);
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s ease, background 0.4s ease;
     z-index: 2;
+    pointer-events: none;
 }
 
 .gallery-item:hover {
@@ -580,6 +583,77 @@ nav ul li a:hover, nav ul li a.active {
 
 .prev-btn { left: 0; }
 .next-btn { right: 0; }
+
+/* Full Screen Gallery Modal Styles */
+.gallery-modal {
+    display: flex; 
+    position: fixed;
+    z-index: 4000; 
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.gallery-modal.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal-content-wrapper {
+    max-width: 90%;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7);
+}
+
+.modal-caption {
+    margin-top: 18px;
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    z-index: 4001;
+    user-select: none;
+}
+
+.modal-close:hover {
+    color: var(--accent-color, #00a8ff);
+    transform: scale(1.15);
+}
 
 /* Interactive Cards Matrix */
 .qa-item {
@@ -913,6 +987,12 @@ footer {
         padding: 25px 20px;
         gap: 15px;
     }
+
+    .modal-close {
+        top: 15px;
+        right: 20px;
+        font-size: 35px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -921,25 +1001,285 @@ footer {
     .carousel-btn { width: 35px; height: 35px; font-size: 1rem; }
 }
 
-/* Contact Social Buttons */
-.contact-social-group { display: flex; flex-direction: column; gap: 15px; }
-.contact-social-btn {
-    display: flex; 
-    align-items: center; 
-    gap: 15px; 
-    padding: 12px 20px; 
-    border-radius: 6px; 
-    background-color: var(--btn-social-bg); 
-    text-decoration: none; 
-    color: var(--btn-social-text); 
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+/* ==========================================
+   INTERACTIVE MESSAGES CAROUSEL CARDS
+   ========================================== */
+
+.messages-section {
+    position: relative;
+    padding: 30px 0;
 }
-.contact-social-btn svg { transition: fill 0.3s ease; }
-.contact-social-btn:hover {
+
+.msg-carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 60px;
+    outline: none;
+    border-radius: 20px;
+}
+
+.msg-carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+    padding: 15px 5px;
+    touch-action: pan-y;
+}
+
+.msg-carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+/* Interactive Card Base */
+.message-card {
+    position: relative;
+    flex: 0 0 100%;
+    max-width: 100%;
+    background: var(--card-bg, #ffffff);
+    border-radius: 16px;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    text-align: left;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(24, 134, 181, 0.18);
+    user-select: none;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+/* Fixed Top Accent Bar */
+.message-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--brand-primary);
+    z-index: 2;
+}
+
+/* Dynamic Radial Mouse Spotlight Layer */
+.message-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle 250px at var(--x, 0px) var(--y, 0px), rgba(0, 168, 255, 0.2), transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Ensure Inner Content Remains Above Gradient Layer */
+.leader-image-frame,
+.leader-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Leader Photo Frame */
+.leader-image-frame {
+    flex-shrink: 0;
+    width: 210px;
+    height: 230px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid var(--brand-primary);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leader-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Leader Content Typography */
+.leader-content {
+    flex: 1;
+}
+
+.leader-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--brand-primary);
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.leader-title {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 16px;
+    transition: color 0.3s ease;
+}
+
+.leader-quote {
+    position: relative;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--text-dark, #333);
+    padding-left: 20px;
+    border-left: 4px solid var(--brand-primary);
+    margin: 0;
+    transition: color 0.3s ease, border-left-color 0.3s ease, border-top-color 0.3s ease;
+}
+
+/* Hover Dynamics */
+.message-card:hover {
     background-color: var(--primary-color);
-    color: var(--text-light);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(15, 83, 112, 0.2);
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 14px 30px rgba(15, 83, 112, 0.25);
 }
-.contact-social-btn:hover svg { fill: var(--text-light) !important; }
+
+.message-card:hover::after {
+    opacity: 1;
+}
+
+.message-card:hover .leader-name {
+    color: var(--text-light, #ffffff);
+}
+
+.message-card:hover .leader-title {
+    color: var(--accent-color, #00a8ff);
+}
+
+.message-card:hover .leader-quote {
+    color: #e2e8f0;
+    border-left-color: var(--accent-color);
+}
+
+.message-card:hover .leader-image-frame {
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 22px rgba(0, 168, 255, 0.35);
+}
+
+/* Navigation Arrows */
+.msg-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--brand-primary);
+    color: #ffffff;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 6px 16px rgba(24, 134, 181, 0.3);
+    transition: background-color 0.2s ease;
+}
+
+.msg-carousel-btn:hover {
+    background: var(--brand-hover);
+}
+
+.msg-prev-btn { left: 5px; }
+.msg-next-btn { right: 5px; }
+
+/* Pagination Dots */
+.msg-carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.msg-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(24, 134, 181, 0.25);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.msg-dot.active {
+    background-color: var(--brand-primary);
+    width: 28px;
+    border-radius: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .msg-carousel-container { padding: 15px 45px; }
+    .leader-image-frame { width: 180px; height: 200px; }
+}
+
+@media (max-width: 768px) {
+    .msg-carousel-container { padding: 10px 5px; }
+    
+    .message-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 18px;
+        gap: 16px;
+    }
+
+    .leader-quote {
+        padding-left: 0;
+        border-left: none;
+        border-top: 3px solid var(--brand-primary);
+        padding-top: 14px;
+        font-size: 0.94rem;
+    }
+
+    .message-card:hover .leader-quote {
+        border-top-color: var(--accent-color);
+    }
+
+    .msg-carousel-btn { width: 40px; height: 40px; font-size: 1rem; }
+    .msg-prev-btn { left: -5px; }
+    .msg-next-btn { right: -5px; }
+}
+
+/* Gallery Carousel Pagination Dots */
+.gallery-carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.gallery-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(24, 134, 181, 0.25);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gallery-dot.active {
+    background-color: var(--primary-color);
+    width: 28px;
+    border-radius: 10px;
+}
