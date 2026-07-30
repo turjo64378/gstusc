@@ -290,13 +290,11 @@ if (msgTrack && msgPrev && msgNext) {
     let msgAutoSlideTimer = null;
     const MSG_SLIDE_DELAY = 6000;
 
-    // Touch & swipe variables
     let startX = 0;
     let currentTranslate = 0;
     let prevTranslate = 0;
     let isDragging = false;
 
-    // Build interactive dots
     if (msgDotsContainer && msgCards.length > 0) {
         msgDotsContainer.innerHTML = '';
         msgCards.forEach((_, i) => {
@@ -322,7 +320,6 @@ if (msgTrack && msgPrev && msgNext) {
         
         msgTrack.style.transform = `translateX(${currentTranslate}px)`;
 
-        // Update active dots
         if (msgDotsContainer) {
             const dots = msgDotsContainer.querySelectorAll('.msg-dot');
             dots.forEach((dot, idx) => {
@@ -358,7 +355,6 @@ if (msgTrack && msgPrev && msgNext) {
         startMsgAutoSlide();
     }
 
-    // Button controls
     msgNext.addEventListener('click', () => {
         nextMsgSlide();
         resetMsgAutoSlide();
@@ -369,13 +365,11 @@ if (msgTrack && msgPrev && msgNext) {
         resetMsgAutoSlide();
     });
 
-    // Pause auto slide on hover
     if (msgCarousel) {
         msgCarousel.addEventListener('mouseenter', stopMsgAutoSlide);
         msgCarousel.addEventListener('mouseleave', startMsgAutoSlide);
     }
 
-    // Keyboard Arrow Keys Control
     if (msgCarousel) {
         msgCarousel.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') {
@@ -388,7 +382,6 @@ if (msgTrack && msgPrev && msgNext) {
         });
     }
 
-    // Touch & Mouse Drag Gestures
     msgViewport.addEventListener('touchstart', touchStart);
     msgViewport.addEventListener('touchend', touchEnd);
     msgViewport.addEventListener('touchmove', touchMove);
@@ -433,10 +426,8 @@ if (msgTrack && msgPrev && msgNext) {
         return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
     }
 
-    // Recalculate on window resize
     window.addEventListener('resize', updateMsgSlider);
 
-    // Initial launch
     setTimeout(() => {
         updateMsgSlider();
         startMsgAutoSlide();
@@ -516,7 +507,7 @@ class UniversalFooter extends HTMLElement {
 customElements.define('universal-header', UniversalHeader);
 customElements.define('universal-footer', UniversalFooter);
 
-// --- GALLERY CAROUSEL CONTROL (WITH DOT PAGINATION & LOOPING) ---
+// --- GALLERY CAROUSEL CONTROL ---
 const track = document.getElementById('galleryTrack');
 const prevBtn = document.getElementById('galleryPrev');
 const nextBtn = document.getElementById('galleryNext');
@@ -546,7 +537,6 @@ if (track && prevBtn && nextBtn) {
 
         const totalPages = Math.ceil(totalColumns / columnsPerView);
 
-        // Render dots if count changes (e.g., window resize)
         if (galleryDotsContainer.children.length !== totalPages) {
             galleryDotsContainer.innerHTML = '';
             for (let i = 0; i < totalPages; i++) {
@@ -702,7 +692,6 @@ const modalClose = document.getElementById('modalClose');
 if (galleryModal && modalImg && modalClose) {
     const galleryItems = document.querySelectorAll('.gallery-item');
 
-    // Open full-size image modal on click
     galleryItems.forEach(item => {
         item.addEventListener('click', () => {
             const img = item.querySelector('img');
@@ -719,26 +708,97 @@ if (galleryModal && modalImg && modalClose) {
         });
     });
 
-    // Helper function to close modal
     const closeModal = () => {
         galleryModal.classList.remove('show');
         galleryModal.setAttribute('aria-hidden', 'true');
     };
 
-    // Event listeners to close modal
     modalClose.addEventListener('click', closeModal);
 
-    // Close when clicking outside the modal content area
     galleryModal.addEventListener('click', (e) => {
         if (e.target === galleryModal) {
             closeModal();
         }
     });
 
-    // Close when pressing the 'Escape' key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && galleryModal.classList.contains('show')) {
             closeModal();
         }
     });
 }
+
+// --- INTERSECTION OBSERVER & HERO STATS ANIMATION ---
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. Auto-Animate Hero 4 Stat Boxes Entry on Load
+    const heroStatBoxes = document.querySelectorAll('#hero .hero-stats .stat-box');
+    
+    heroStatBoxes.forEach((box, index) => {
+        box.style.opacity = '0';
+        box.style.transform = 'translateY(50px)';
+        box.style.transition = 'opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)';
+        
+        setTimeout(() => {
+            box.style.opacity = '1';
+            box.style.transform = 'translateY(0)';
+        }, 200 + (index * 150));
+    });
+
+    // 2. Animated Counter Logic for Numbers (.counter)
+    const counters = document.querySelectorAll('.counter');
+
+    const animateCounter = (counter) => {
+        const target = +counter.getAttribute('data-target');
+        const suffix = counter.getAttribute('data-suffix') || '';
+        const duration = 2000; // 2 seconds transition duration
+        const frameDuration = 1000 / 60; // 60 FPS frame calculation
+        const totalFrames = Math.round(duration / frameDuration);
+
+        let frame = 0;
+
+        const countUp = setInterval(() => {
+            frame++;
+            const progress = frame / totalFrames;
+            // Ease-out formula for deceleration toward completion
+            const currentCount = Math.round(target * (1 - Math.pow(1 - progress, 3)));
+
+            counter.innerText = currentCount + suffix;
+
+            if (frame >= totalFrames) {
+                counter.innerText = target + suffix;
+                clearInterval(countUp);
+            }
+        }, frameDuration);
+    };
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+
+    counters.forEach((counter) => counterObserver.observe(counter));
+
+    // 3. Scroll Reveal Engine (Animate sections from down to up on scroll)
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80px 0px',
+        threshold: 0.12
+    };
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const elementsToReveal = document.querySelectorAll('.reveal-on-scroll');
+    elementsToReveal.forEach(el => scrollObserver.observe(el));
+});

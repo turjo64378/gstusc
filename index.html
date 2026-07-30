@@ -20,50 +20,50 @@
         
         <div class="hero-stats">
             <div class="stat-box">
-                <h2>800+</h2>
+                <h2 class="counter" data-target="800" data-suffix="+">0</h2>
                 <p>Members</p>
             </div>
             <div class="stat-box">
-                <h2>8</h2>
+                <h2 class="counter" data-target="8">0</h2>
                 <p>Teams</p>
             </div>
             <div class="stat-box">
-                <h2>100+</h2>
+                <h2 class="counter" data-target="100" data-suffix="+">0</h2>
                 <p>Events</p>
             </div>
             <div class="stat-box">
-                <h2>10+</h2>
+                <h2 class="counter" data-target="10" data-suffix="+">0</h2>
                 <p>Achievements</p>
             </div>
         </div>
     </section>
 
-    <div class="section-container">
+    <div class="section-container reveal-on-scroll">
         <h2 class="section-title">Welcome to the Science Hub</h2>
         <p class="section-subtitle">The GSTU Science Club is a platform for curious minds. Click through our portal sections below to see who we are, what we build, and how you can get involved.</p>
 
         <div class="grid">
-            <div class="card">
+            <div class="card reveal-on-scroll">
                 <h3>ℹ️ About Us</h3>
                 <p>Club history, vision, and passion.</p>
                 <br>
                 <a href="about.html" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Discover More</a>
             </div>
-            <div class="card">
+            <div class="card reveal-on-scroll">
                 <h3>👥 Our Committee</h3>
                 <p>Leadership and event organizers.</p>
                 <br>
                 <a href="committee.html" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">View Leaders</a>
             </div>
 
-            <div class="card">
+            <div class="card reveal-on-scroll">
                 <h3>📅 Club Events</h3>
                 <p>Hackathons, exhibitions, and seminars.</p>
                 <br>
                 <a href="events.html" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Explore Events</a>
             </div>
 
-            <div class="card">
+            <div class="card reveal-on-scroll">
                 <h3>🏆 Achievements</h3>
                 <p>Milestones, awards, and club success stories.</p>
                 <br>
@@ -72,7 +72,7 @@
         </div>
     </div>
 
-<div class="section-container">
+    <div class="section-container reveal-on-scroll">
         <h2 class="section-title">Photo Gallery</h2>
         <p class="section-subtitle">Moments captured during our collaborative workshops, design sessions, and competitive representations.</p>
 
@@ -153,20 +153,19 @@
                         <div class="gallery-caption">National Museum of Science & Technology</div>
                     </div>
                 </div>                    
-        <button class="carousel-btn next-btn" id="galleryNext" aria-label="Next photos">&#10095;</button>
+                <button class="carousel-btn next-btn" id="galleryNext" aria-label="Next photos">&#10095;</button>
             </div>
-            </div>
-                <div class="gallery-carousel-dots" id="galleryDots"></div>
         </div>
+        <div class="gallery-carousel-dots" id="galleryDots"></div>
     </div>
 
-    <div class="section-container">
+    <div class="section-container reveal-on-scroll">
         <h2 class="section-title">Our Affiliations</h2>
         <p class="section-subtitle">We are proudly affiliated with and supported by leading institutional bodies that drive scientific research and technological literacy.</p>
         
         <div class="affiliations-list" style="display: flex; flex-direction: column; gap: 25px; max-width: 1000px; margin: 2.5rem auto 0 auto;">
             
-            <div class="affiliation-wide-card interactive-affiliation-card">
+            <div class="affiliation-wide-card interactive-affiliation-card reveal-on-scroll">
                 <div class="affiliation-logo-frame" style="flex-shrink: 0; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 2;">
                     <img src="https://upload.wikimedia.org/wikipedia/en/6/67/GSTU_Logo.png" alt="GSTU Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                 </div>
@@ -177,7 +176,7 @@
                 </div>
             </div>
 
-            <div class="affiliation-wide-card interactive-affiliation-card">
+            <div class="affiliation-wide-card interactive-affiliation-card reveal-on-scroll">
                 <div class="affiliation-logo-frame" style="flex-shrink: 0; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 2;">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/National_Museum_of_Science_and_Technology_%28Bangladesh%29_logo.svg/500px-National_Museum_of_Science_and_Technology_%28Bangladesh%29_logo.svg.png" alt="NMST Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                 </div>
@@ -192,11 +191,11 @@
     </div>
 
     <!-- Messages From Our Leaders Section -->
-    <div class="section-container messages-section">
+    <div class="section-container messages-section reveal-on-scroll">
         <h2 class="section-title">Messages From Our Leaders</h2>
         <p class="section-subtitle">Read inspiring words and visionary guidance from our honorable advisors and leadership board.</p>
 
-        <!-- Carousel Wrapper (Max Width: 1400px) -->
+        <!-- Carousel Wrapper -->
         <div class="msg-carousel-container" id="msgCarousel" tabindex="0" aria-label="Leader Messages Carousel. Use arrow keys to navigate.">
 
             <button class="msg-carousel-btn msg-prev-btn" id="msgPrev" aria-label="Previous message">&#10094;</button>
@@ -204,7 +203,7 @@
             <div class="msg-carousel-viewport" id="msgViewport">
                 <div class="msg-carousel-track" id="msgTrack">
                     
-                    <!-- Leader 1: Vice Chancellor -->
+                    <!-- Leader 1 -->
                     <div class="message-card" data-index="0">
                         <div class="leader-image-frame">
                             <img src="image/VC.webp" alt="Prof. Dr. Md. Nazmus Sadath" onerror="this.src='image/logo.webp'">
@@ -218,7 +217,7 @@
                         </div>
                     </div>
 
-                    <!-- Leader 2: Chief Advisor -->
+                    <!-- Leader 2 -->
                     <div class="message-card" data-index="1">
                         <div class="leader-image-frame">
                             <img src="image/CA.webp" alt="Dr. Md. Kamruzzaman" onerror="this.src='image/logo.webp'">
@@ -232,7 +231,7 @@
                         </div>
                     </div>
 
-                    <!-- Leader 3: President -->
+                    <!-- Leader 3 -->
                     <div class="message-card" data-index="2">
                         <div class="leader-image-frame">
                             <img src="image/PS.webp" alt="Md. Tawhidur Rahman" onerror="this.src='image/logo.webp'">
@@ -246,7 +245,7 @@
                         </div>
                     </div>
 
-                    <!-- Leader 4: General Secretary -->
+                    <!-- Leader 4 -->
                     <div class="message-card" data-index="3">
                         <div class="leader-image-frame">
                             <img src="image/GS.webp" alt="S M Al-Amin Nishan" onerror="this.src='image/logo.webp'">
@@ -270,33 +269,33 @@
         <div class="msg-carousel-dots" id="msgDots"></div>
     </div>
     
-    <div class="section-container qa-section">
+    <div class="section-container qa-section reveal-on-scroll">
         <h2 class="section-title">Why Join Us?</h2>
         <p class="section-subtitle">Got questions? We've got answers. Here is what you need to know about becoming a part of our community.</p>
         
         <div class="qa-container" style="max-width: 1200px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 20px;">
             
-            <div class="qa-item interactive-qa-card">
+            <div class="qa-item interactive-qa-card reveal-on-scroll">
                 <h4>❓ Why Clubbing is Essential?</h4>
                 <p>Builds vital soft skills and expands your network.</p>
             </div>
 
-            <div class="qa-item interactive-qa-card">
+            <div class="qa-item interactive-qa-card reveal-on-scroll">
                 <h4>❓ Why Join the Science Club?</h4>
                 <p>Bridges academic theory with real-world project application.</p>
             </div>
 
-            <div class="qa-item interactive-qa-card">
+            <div class="qa-item interactive-qa-card reveal-on-scroll">
                 <h4>❓ How is our club different from others?</h4>
                 <p>Delivers high-impact professional output, securing grants and hosting national festivals.</p>
             </div>
 
-            <div class="qa-item interactive-qa-card">
+            <div class="qa-item interactive-qa-card reveal-on-scroll">
                 <h4>❓ How will you benefit?</h4>
                 <p>Builds a high-value CV and provides mentorship for scholarships and jobs.</p>
             </div>
 
-            <div class="qa-item interactive-qa-card">
+            <div class="qa-item interactive-qa-card reveal-on-scroll">
                 <h4>❓ Is clubbing harmful or helpful to academics, and how do members manage time?</h4>
                 <p>Helpful; keeps you productively occupied while prioritizing academics during exams.</p>
             </div>
