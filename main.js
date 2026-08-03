@@ -79,8 +79,14 @@ function initializeParticles(containerElement, canvasElement) {
             let size = (Math.random() * 2) + 1;
             let x = Math.random() * (canvasElement.width - size * 2) + size;
             let y = Math.random() * (canvasElement.height - size * 2) + size;
-            let directionX = (Math.random() * 0.6) - 0.3;
-            let directionY = (Math.random() * 0.6) - 0.3;
+            
+            // Random speed and unlinked 360-degree direction vector
+            let speed = Math.random() * 0.6 + 0.2;
+            let angle = Math.random() * Math.PI * 2;
+            
+            let directionX = Math.cos(angle) * speed;
+            let directionY = Math.sin(angle) * speed;
+            
             let color = 'rgba(0, 168, 255, ' + (Math.random() * 0.4 + 0.3) + ')';
 
             particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
@@ -277,6 +283,7 @@ class UniversalHeader extends HTMLElement {
 }
 
 // --- MESSAGES CAROUSEL ENGINE ---
+const messagesSection = document.querySelector('.messages-section');
 const msgCarousel = document.getElementById('msgCarousel');
 const msgViewport = document.getElementById('msgViewport');
 const msgTrack = document.getElementById('msgTrack');
@@ -365,9 +372,10 @@ if (msgTrack && msgPrev && msgNext) {
         resetMsgAutoSlide();
     });
 
-    if (msgCarousel) {
-        msgCarousel.addEventListener('mouseenter', stopMsgAutoSlide);
-        msgCarousel.addEventListener('mouseleave', startMsgAutoSlide);
+    // Pause on hovering over the entire messages section container
+    if (messagesSection) {
+        messagesSection.addEventListener('mouseenter', stopMsgAutoSlide);
+        messagesSection.addEventListener('mouseleave', startMsgAutoSlide);
     }
 
     if (msgCarousel) {
