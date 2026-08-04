@@ -6,6 +6,41 @@
     <title>Committee - GSTU Science Club</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Search Bar Controls Styling */
+        .search-container {
+            max-width: 1100px;
+            margin: 0 auto 30px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 30px;
+            outline: none;
+            background-color: var(--card-bg);
+            color: var(--text-dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0, 168, 255, 0.2);
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: 20px 0;
+        }
+
         /* Collapsible Accordion Custom Styling */
         .committee-accordion {
             max-width: 1100px;
@@ -111,6 +146,10 @@
         /* ==========================================
            Dark Theme Adaptive Overrides Configuration
            ========================================== */
+        [data-theme="dark"] .search-input {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
         [data-theme="dark"] details {
             border-color: rgba(255, 255, 255, 0.08);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -146,6 +185,16 @@
     <div class="section-container">
         <h2 class="section-title">Executive Committees</h2>
         <p class="section-subtitle">Explore our legacy of leadership through the years. Click on any committee term below to view its executive board roster.</p>
+
+        <!-- Search Input Bar -->
+        <div class="search-container">
+            <input type="text" id="committeeSearch" class="search-input" placeholder="Search by name or designation...">
+        </div>
+
+        <!-- No Search Results Message -->
+        <div id="noResults" class="no-results">
+            No matching committee member or designation found.
+        </div>
 
         <div class="committee-accordion">
             
@@ -750,22 +799,25 @@
                                 <td>Chemistry</td>
                                 <td>—</td>
                             </tr>
+                            <tr>
                                 <td>Most. Masuma Khatun</td>
                                 <td><strong>Executive Member</strong></td>
                                 <td>Biochemistry and Molecular Biology</td>
                                 <td>—</td>
                             </tr>
+                            <tr>
                                 <td>Md. Atikur Rahman</td>
                                 <td><strong>Executive Member</strong></td>
                                 <td>-</td>
                                 <td>—</td>
                             </tr>
+                            <tr>
                                 <td>Nure Jannati Akhi</td>
                                 <td><strong>Executive Member</strong></td>
                                 <td>Fisheries and Marine Bioscience</td>
                                 <td>—</td>
                             </tr>
-                            </tr>
+                            <tr>
                                 <td>Jhuma Akter</td>
                                 <td><strong>Executive Member</strong></td>
                                 <td>-</td>
@@ -1513,7 +1565,8 @@
                     </table>
                 </div>
             </details>
-             <details>
+
+            <details>
                 <summary>Executive Committee 20-21</summary>
                 <div class="accordion-content">
                     <table class="list-table">
@@ -1704,6 +1757,7 @@
                     </table>
                 </div>
             </details>
+
             <details>
                 <summary>Executive Committee 19-20</summary>
                 <div class="accordion-content">
@@ -1823,5 +1877,54 @@
     <universal-footer></universal-footer>
 
     <script src="main.js"></script>
+
+    <!-- Committee Search Engine Filter Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('committeeSearch');
+            const detailsElements = document.querySelectorAll('.committee-accordion details');
+            const noResults = document.getElementById('noResults');
+
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                let hasGlobalMatches = false;
+
+                detailsElements.forEach(details => {
+                    const rows = details.querySelectorAll('.list-table tbody tr');
+                    let hasMatchInSection = false;
+
+                    rows.forEach(row => {
+                        const nameCell = row.cells[0]?.textContent.toLowerCase() || '';
+                        const designationCell = row.cells[1]?.textContent.toLowerCase() || '';
+
+                        if (query === '' || nameCell.includes(query) || designationCell.includes(query)) {
+                            row.style.display = '';
+                            hasMatchInSection = true;
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+
+                    if (query === '') {
+                        details.style.display = '';
+                        // Keep current default open states when query is cleared
+                    } else if (hasMatchInSection) {
+                        details.style.display = '';
+                        details.open = true; // Auto-expand accordion to show search result
+                        hasGlobalMatches = true;
+                    } else {
+                        details.style.display = 'none';
+                        details.open = false;
+                    }
+                });
+
+                if (query !== '' && !hasGlobalMatches) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
