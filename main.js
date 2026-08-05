@@ -810,3 +810,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const elementsToReveal = document.querySelectorAll('.reveal-on-scroll');
     elementsToReveal.forEach(el => scrollObserver.observe(el));
 });
+
+// --- TEAMS SEARCH ENGINE FILTER LOGIC ---
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('teamsSearch');
+    const detailsElements = document.querySelectorAll('.committee-accordion details');
+    const noResults = document.getElementById('noResults');
+
+    if (searchInput && detailsElements.length > 0) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            let hasGlobalMatches = false;
+
+            detailsElements.forEach(details => {
+                const rows = details.querySelectorAll('.list-table tbody tr');
+                let hasMatchInSection = false;
+
+                rows.forEach(row => {
+                    const nameCell = row.cells[0]?.textContent.toLowerCase() || '';
+                    const teamCell = row.cells[1]?.textContent.toLowerCase() || '';
+                    const designationCell = row.cells[2]?.textContent.toLowerCase() || '';
+
+                    if (query === '' || nameCell.includes(query) || teamCell.includes(query) || designationCell.includes(query)) {
+                        row.style.display = '';
+                        hasMatchInSection = true;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                if (query === '') {
+                    details.style.display = '';
+                } else if (hasMatchInSection) {
+                    details.style.display = '';
+                    details.open = true; // Automatically expand matching accordion
+                    hasGlobalMatches = true;
+                } else {
+                    details.style.display = 'none';
+                    details.open = false;
+                }
+            });
+
+            if (noResults) {
+                if (query !== '' && !hasGlobalMatches) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            }
+        });
+    }
+});
