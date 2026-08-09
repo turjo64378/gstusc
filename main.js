@@ -165,13 +165,13 @@ class UniversalHeader extends HTMLElement {
                         <li><a href="events.html">Events</a></li>
                         <li><a href="achievement.html">Achievement</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-trigger">Committee <span class="dropdown-arrow">&#9662;</span></a>
+                            <a href="committee.html" class="dropdown-trigger">Committee <span class="dropdown-arrow">&#9662;</span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="advisor.html">Advisor Panel</a></li>
                                 <li><a href="committee.html">Executive Committee</a></li>
                                 <li><a href="ce.html">Core Executives</a></li>
                                 <li><a href="standing-committee.html">Standing Committee</a></li>
-                                <li><a href="alumni.html">Alumni</a></li>
+                                <li><a href="alumni.html">Alumni Panel</a></li>
                                 <li><a href="teams.html">Teams</a></li>
                             </ul>
                         </li>
@@ -490,7 +490,9 @@ class UniversalFooter extends HTMLElement {
                 
                 <div class="footer-col">
                     <h3>Connect With Us</h3>
-                    <p>Follow our news feeds for instant updates on current hackathons and assignments.</p>
+                    <p>Follow our news feeds for instant updates on current hackathons and assignments.</p> <br>
+                    <p>President: +880 1602-337216</p>
+                    <p>General Secretary: +880 1746-739437</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/GSTUSC" target="_blank" aria-label="Facebook"><img src="image/facebook.webp" width="35px" height="35px"></a>
                         <a href="https://www.linkedin.com/company/gstu-science-club" target="_blank" aria-label="LinkedIn"><img src="image/linkedin.webp" width="35px" height="35px"></a>
@@ -860,4 +862,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+});
+
+/* ==========================================
+   SESSION-BASED PRELOADER LOGIC (2.5s MIN)
+   ========================================== */
+window.addEventListener('load', () => {
+  // If user is refreshing in the same tab, unlock instantly
+  if (sessionStorage.getItem('hasSeenLoaderThisSession')) {
+    document.body.classList.remove('loading');
+    return;
+  }
+
+  const loader = document.getElementById('loader-wrapper');
+  const body = document.body;
+
+  // Minimum duration: 2.5 seconds (2500ms)
+  const MIN_DISPLAY_TIME = 2500; 
+  const startTime = window.loaderStartTime || Date.now();
+  const elapsedTime = Date.now() - startTime;
+  const remainingTime = Math.max(0, MIN_DISPLAY_TIME - elapsedTime);
+
+  setTimeout(() => {
+    if (loader) {
+      loader.classList.add('fade-out');
+    }
+    body.classList.remove('loading');
+
+    // Save flag for this session only
+    sessionStorage.setItem('hasSeenLoaderThisSession', 'true');
+  }, remainingTime);
 });
