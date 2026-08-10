@@ -2311,3 +2311,63 @@ body.loading {
   transform: translateY(-2px);
   box-shadow: 0 0 35px rgba(0, 210, 255, 0.8);
 }
+
+/* Angled Light Ray Text Effect */
+.hero-title {
+  /* Angled gradient creating a sharp light beam highlight */
+  background: linear-gradient(
+    120deg,
+    #ffffff 20%,
+    #38bdf8 40%,
+    #ffffff 50%,
+    #38bdf8 60%,
+    #ffffff 80%
+  );
+  background-size: 200% auto;
+  
+  /* Clips the gradient into the text shape */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Sweeps back and forth from start to end */
+  animation: lightRaySweep 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes lightRaySweep {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* Hero Section Floating Bubble Logo */
+@keyframes bubbleFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-15px) scale(1.03, 0.97); /* Upward movement with subtle bubble elasticity */
+    }
+}
+
+#hero .hero-content img {
+    animation: bubbleFloat 4s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes bubbleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+#hero .hero-content img {
+    animation: bubbleFloat 4s ease-in-out infinite;
+    will-change: transform;
+}
