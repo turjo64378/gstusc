@@ -35,22 +35,21 @@
     
     <universal-header></universal-header>
 
-<section id="hero" style="position: relative; text-align: left; align-items: flex-start; padding-left: 10%; padding-top: 50px; padding-bottom: 50px; overflow: hidden; min-height: 100vh;">
+<section id="hero">
 
-    <!-- BACKGROUND CANVAS (Stays behind everything, no layout interference) -->
+    <!-- BACKGROUND CANVAS -->
     <canvas id="atom-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
 
-    <!-- FOREGROUND CONTENT (Original layout restored) -->
+    <!-- FOREGROUND CONTENT -->
     <div class="hero-content" style="position: relative; z-index: 1; max-width: 800px;">
-        <img src="image/logo.webp" height="180px" width="180px" alt="GSTU Science Club Logo" style="margin-top: -20px; margin-bottom: 10px;">
+        <img src="image/logo.webp" height="180px" width="180px" alt="GSTU Science Club Logo" style="margin-bottom: 10px;">
     
-        <!-- Basenji font applied via .interactive-glow-title -->
         <h1 class="hero-title">GSTU Science Club</h1>
         <h3>Apply Your Idea</h3> <br>
         <p>Join the brightest minds at GSTU as we push the boundaries of science, technology, and engineering. Start your journey into the unknown from here . . . .</p>
         
         <!-- STATS BOXES -->
-        <div class="hero-stats" style="display: flex; gap: 15px; justify-content: flex-start; flex-wrap: wrap; margin-top: 20px;">
+        <div class="hero-stats">
             <div class="stat-box">
                 <h2 class="counter" data-target="800" data-suffix="+">0</h2>
                 <p>Members</p>

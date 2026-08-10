@@ -1270,32 +1270,38 @@ if (atomCanvas && typeof THREE !== 'undefined') {
     const delta = clock.getDelta();
     const elapsedTime = clock.getElapsedTime();
 
-    const desiredY = elapsedTime * 0.12 + targetRotationY;
+    // Slowed overall model rotation
+    const desiredY = elapsedTime * 0.04 + targetRotationY;
     
     atomGroup.rotation.y += (desiredY - atomGroup.rotation.y) * 0.05;
     atomGroup.rotation.x += (targetRotationX - atomGroup.rotation.x) * 0.05;
 
-    quantumCloud.rotation.x = elapsedTime * 0.05;
-    quantumCloud.rotation.y = -elapsedTime * 0.08;
+    // Slowed quantum cloud rotation
+    quantumCloud.rotation.x = elapsedTime * 0.02;
+    quantumCloud.rotation.y = -elapsedTime * 0.03;
 
-    nucleusGroup.rotation.x = elapsedTime * 0.4;
-    nucleusGroup.rotation.y = elapsedTime * 0.5;
+    // Slowed nucleus rotation
+    nucleusGroup.rotation.x = elapsedTime * 0.15;
+    nucleusGroup.rotation.y = elapsedTime * 0.2;
 
     nucleusGroup.children.forEach((child) => {
       if (child.isMesh && child.userData.axis) {
-        child.position.applyAxisAngle(child.userData.axis, child.userData.speed * delta);
+        // Slowed nucleon rotation speed
+        child.position.applyAxisAngle(child.userData.axis, child.userData.speed * delta * 0.5);
         
         const baseRadius = child.userData.radius;
-        const microPulse = Math.sin(elapsedTime * 3 + child.id) * 0.012;
+        const microPulse = Math.sin(elapsedTime * 1.5 + child.id) * 0.012;
         child.position.setLength(baseRadius + microPulse);
       }
     });
 
-    const nucleusPulse = Math.sin(elapsedTime * 2.5) * 0.2 + 3.2;
+    // Slowed nucleus pulse
+    const nucleusPulse = Math.sin(elapsedTime * 1.2) * 0.2 + 3.2;
     nucleusGlowSprite.scale.set(nucleusPulse, nucleusPulse, nucleusPulse);
 
     electronInstances.forEach((e) => {
-      e.angle += 0.007 * e.speed;
+      // Slowed electron orbital speed
+      e.angle += 0.003 * e.speed;
 
       const headX = Math.cos(e.angle) * e.radius;
       const headZ = Math.sin(e.angle) * e.radius;
