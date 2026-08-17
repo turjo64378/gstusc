@@ -177,18 +177,18 @@ class UniversalHeader extends HTMLElement {
 
                 <nav id="nav-menu">
                     <ul id="nav-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="achievement.html">Achievement</a></li>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/event">Events</a></li>
+                        <li><a href="/achievement">Achievement</a></li>
                         <li class="dropdown">
-                            <a href="committee.html" class="dropdown-trigger">Committee <span class="dropdown-arrow">&#9662;</span></a>
+                            <a href="/committee" class="dropdown-trigger">Committee <span class="dropdown-arrow">&#9662;</span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="advisor.html">Advisor Panel</a></li>
-                                <li><a href="committee.html">Executive Committee</a></li>
-                                <li><a href="ce.html">Core Executives</a></li>
-                                <li><a href="standing-committee.html">Standing Committee</a></li>
-                                <li><a href="alumni.html">Alumni Panel</a></li>
-                                <li><a href="teams.html">Teams</a></li>
+                                <li><a href="/advisor">Advisor Panel</a></li>
+                                <li><a href="/committee">Executive Committee</a></li>
+                                <li><a href="/ce">Core Executives</a></li>
+                                <li><a href="/standing-committee">Standing Committee</a></li>
+                                <li><a href="/alumni">Alumni Panel</a></li>
+                                <li><a href="/teams">Teams</a></li>
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
